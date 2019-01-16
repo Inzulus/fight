@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="eibo_simpleminim">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/eibo_simpleminim.jar!/" />
+      <root url="jar://$PROJECT_DIR$/eibo_staticscanner.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jl1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jsminim.jar!/" />
+      <root url="jar://$PROJECT_DIR$/minim.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mp3agic.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mp3spi1.9.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tritonus_aos.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tritonus_share.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/eibo_simpleminim.jar!/" />
+      <root url="jar://$PROJECT_DIR$/eibo_staticscanner.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jl1.0.1.jar!/" />
+    </SOURCES>
+  </library>
+</component>

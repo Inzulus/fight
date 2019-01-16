@@ -1,21 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainview.Maincontroller">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainview.Maincontroller">
    <children>
-      <VBox alignment="CENTER" layoutX="230.0" layoutY="218.0" prefHeight="141.0" prefWidth="141.0">
+      <VBox alignment="CENTER" layoutX="689.0" layoutY="450.0" prefHeight="384.0" prefWidth="543.0" AnchorPane.bottomAnchor="25.0">
          <children>
-            <Label fx:id="startLabel" alignment="CENTER" text="START" />
-            <Label fx:id="highscoreLabel" text="HIGHSCORE" />
-            <Label fx:id="exitLabel" text="EXIT" />
+            <Button mnemonicParsing="false" onMouseClicked="#changeSong" style="-fx-background-color: transperent;" text="CHANGE SONG" textFill="#353535">
+               <font>
+                  <Font size="60.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#showHighscore" style="-fx-background-color: transparent;" text="HIGHSCORE" textFill="#353535">
+               <font>
+                  <Font size="70.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#leaveGame" style="-fx-background-color: transparent;" text="EXIT" textFill="#353535">
+               <font>
+                  <Font size="70.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
-      <Button fx:id="playButton" layoutX="272.0" layoutY="109.0" mnemonicParsing="false" text="play" />
-      <Slider layoutX="29.0" layoutY="28.0" />
+      <VBox layoutX="108.0" layoutY="674.0" prefHeight="268.0" prefWidth="484.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="80.0">
+         <children>
+            <Label text="SONGS">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onMouseClicked="#playSong" style="-fx-background-color: transparent;" text="LastSong">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#playSong" style="-fx-background-color: transparent;" text="LastLastSong">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#playSong" style="-fx-background-color: transparent;" text="LastLastLastSong">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_RIGHT" layoutX="1547.0" layoutY="769.0" prefHeight="204.0" prefWidth="270.0" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="80.0">
+         <children>
+            <Label text="TOP">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+            <Label text="First">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label text="Second">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label text="Third">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="42.0" layoutY="84.0" prefHeight="112.0" prefWidth="384.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <Label text="Songtitel">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="67.0" prefWidth="362.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#playAndPause" style="-fx-background-color: transparent;" text="Play" />
+                  <Slider prefHeight="73.0" prefWidth="270.0" style="-fx-pref-height: 1.2px;" stylesheets="@../../files/SliderStyle.css" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="1414.0" layoutY="56.0" prefHeight="112.0" prefWidth="384.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <Label>
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="67.0" prefWidth="362.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#mute" style="-fx-background-color: transparent;" text="Mute" />
+                  <Slider prefHeight="73.0" prefWidth="270.0" stylesheets="@../../files/SliderStyle.css" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="570.0" layoutY="183.0" prefHeight="240.0" prefWidth="780.0">
+         <children>
+            <Label text="Songtitel">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onMouseClicked="#startGame" style="-fx-background-color: transparent; -fx-font-weight: bold; -fx-font-size: 100px;" text="FIGHTS" textFill="#353535">
+               <font>
+                  <Font size="80.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

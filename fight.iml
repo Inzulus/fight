@@ -10,5 +10,6 @@
     <orderEntry type="library" name="eibo_simpleminim" level="project" />
     <orderEntry type="library" name="eibo_staticscanner" level="project" />
     <orderEntry type="library" name="jl1.0.1" level="project" />
+    <orderEntry type="library" name="eibo_simpleminim" level="project" />
   </component>
 </module>
