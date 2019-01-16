@@ -1,84 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainview.maincontroller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainview.Maincontroller">
    <children>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="812.0" layoutY="672.0" prefHeight="276.0" prefWidth="353.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="700.0">
+      <VBox alignment="CENTER" layoutX="230.0" layoutY="218.0" prefHeight="141.0" prefWidth="141.0">
          <children>
-            <Label fx:id="startLabel" alignment="CENTER" text="START" textFill="#353535">
-               <font>
-                  <Font size="60.0" />
-               </font></Label>
-            <Label prefHeight="88.0" prefWidth="331.0" text="HIGHSCORE" textFill="#353535">
-               <font>
-                  <Font size="60.0" />
-               </font></Label>
-            <Label text="EXIT" textFill="#353535">
-               <font>
-                  <Font size="60.0" />
-               </font></Label>
+            <Label fx:id="startLabel" alignment="CENTER" text="START" />
+            <Label fx:id="highscoreLabel" text="HIGHSCORE" />
+            <Label fx:id="exitLabel" text="EXIT" />
          </children>
       </VBox>
-      <VBox layoutX="38.0" layoutY="614.0" prefHeight="436.0" prefWidth="240.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="650.0">
-         <children>
-            <Label text="Songs">
-               <font>
-                  <Font size="40.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Label>
-            <Button mnemonicParsing="false" text="LastSong">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" text="LastLastSong">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" text="LastLastLastSong">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
-      <VBox alignment="TOP_RIGHT" layoutX="1640.0" layoutY="604.0" prefHeight="436.0" prefWidth="240.0" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="650.0">
-         <children>
-            <Label text="Highscores">
-               <font>
-                  <Font size="40.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Label>
-            <Button mnemonicParsing="false" text="First">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" text="Second">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" text="Third">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
+      <Button fx:id="playButton" layoutX="272.0" layoutY="109.0" mnemonicParsing="false" text="play" />
+      <Slider layoutX="29.0" layoutY="28.0" />
    </children>
 </AnchorPane>
