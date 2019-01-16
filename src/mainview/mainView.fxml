@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="406.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle fx:id="rec1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutX="431.0" layoutY="147.0" stroke="BLACK" strokeType="INSIDE" width="23.0" />
+      <Rectangle fx:id="rec2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutX="93.0" layoutY="147.0" stroke="BLACK" strokeType="INSIDE" width="23.0" x="100.0" y="100.0" />
+      <Slider layoutX="233.0" layoutY="28.0" />
+      <VBox alignment="CENTER" layoutX="245.0" layoutY="203.0" prefHeight="141.0" prefWidth="141.0">
+         <children>
+            <Label fx:id="startLabel" alignment="CENTER" text="START" />
+            <Label fx:id="highscoreLabel" text="HIGHSCORE" />
+            <Label fx:id="exitLabel" text="EXIT" />
+            <Button fx:id="playButton" mnemonicParsing="false" onAction="#handlePlayButtonAction" text="play" />
+         </children>
+      </VBox>
+      <Rectangle fx:id="bottomRec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="61.0" layoutX="354.0" layoutY="344.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+   </children>
+</Pane>

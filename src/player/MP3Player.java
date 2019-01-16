@@ -69,7 +69,7 @@ public class MP3Player {
         timeThread = new Thread() {
             public void run() {
                 while(!isInterrupted()){
-                    System.out.println(audioPlayer.position());
+                    //System.out.println(audioPlayer.position());
                     currentTime.setTime(audioPlayer.position()/1000);
                     try {
                         sleep(200);
