@@ -15,6 +15,7 @@
             <Label fx:id="exitLabel" text="EXIT" />
          </children>
       </VBox>
-      <Button fx:id="playButton" layoutX="272.0" layoutY="109.0" mnemonicParsing="false" onAction="#play" text="play" />
+      <Button fx:id="playButton" layoutX="272.0" layoutY="109.0" mnemonicParsing="false" text="play" />
+      <Slider layoutX="29.0" layoutY="28.0" />
    </children>
 </AnchorPane>
