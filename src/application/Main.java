@@ -38,6 +38,7 @@ public class Main extends Application {
 
         scene = new Scene(root);
         primaryStage.setTitle("FIGHT");
+        primaryStage.setMaximized(true);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

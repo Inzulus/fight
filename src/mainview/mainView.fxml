@@ -9,12 +9,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="100.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="100.0" prefHeight="980.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" />
-      <VBox prefHeight="1080.0" prefWidth="1920.0">
+      <VBox prefHeight="980.0" prefWidth="1920.0">
          <children>
-            <BorderPane prefHeight="112.0" prefWidth="1920.0">
+            <BorderPane>
                <left>
                   <VBox alignment="CENTER" prefHeight="112.0" prefWidth="472.0" BorderPane.alignment="CENTER">
                      <children>
@@ -26,7 +26,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="362.0">
                            <children>
                               <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Play" />
-                              <Slider prefHeight="73.0" prefWidth="270.0" style="-fx-pref-height: 1.2px;" stylesheets="@../../files/SliderStyle.css" />
+                              <Slider prefHeight="73.0" prefWidth="270.0" style="-fx-pref-height: 1.2px;" stylesheets="@SliderStyle.css" />
                            </children>
                         </HBox>
                      </children>
@@ -46,7 +46,7 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="67.0" prefWidth="362.0">
                            <children>
                               <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Mute" />
-                              <Slider prefHeight="73.0" prefWidth="270.0" stylesheets="@../../files/SliderStyle.css" />
+                              <Slider prefHeight="73.0" prefWidth="270.0" stylesheets="@SliderStyle.css" />
                            </children>
                         </HBox>
                      </children>
@@ -63,14 +63,14 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-font-weight: bold; -fx-font-size: 100px;" text="FIGHTS" textFill="#353535">
+                  <Button fx:id="fightButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleFightButton" style="-fx-background-color: transparent; -fx-font-weight: bold; -fx-font-size: 100px;" text="FIGHTS" textFill="#353535">
                      <font>
                         <Font size="80.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
-            <BorderPane prefHeight="400.0" prefWidth="1920.0">
+            <BorderPane>
                <center>
                   <VBox alignment="BOTTOM_CENTER" prefHeight="322.0" prefWidth="1920.0">
                      <children>

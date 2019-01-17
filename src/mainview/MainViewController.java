@@ -47,6 +47,9 @@ public class MainViewController {
     @FXML
     private Rectangle bottomRec = new Rectangle();
 
+    @FXML
+    private Button fightButton = new Button();
+
 
     private TranslateTransition translateTransition = new TranslateTransition();
 
@@ -60,10 +63,17 @@ public class MainViewController {
                 Platform.runLater(()->startLabel.setText(String.valueOf(newValue.intValue())));
             }
         });
+
+
     }
 
     @FXML
     public void handlePlayButtonAction(){
+        application.switchView("gameView");
+    }
+
+    @FXML
+    public void handleFightButton(){
         application.switchView("gameView");
     }
 
