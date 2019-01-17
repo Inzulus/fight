@@ -1,26 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane prefHeight="406.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle fx:id="rec1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutX="431.0" layoutY="147.0" stroke="BLACK" strokeType="INSIDE" width="23.0" />
-      <Rectangle fx:id="rec2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutX="93.0" layoutY="147.0" stroke="BLACK" strokeType="INSIDE" width="23.0" x="100.0" y="100.0" />
-      <Slider layoutX="233.0" layoutY="28.0" />
-      <VBox alignment="CENTER" layoutX="245.0" layoutY="203.0" prefHeight="141.0" prefWidth="141.0">
+      <VBox>
          <children>
-            <Label fx:id="startLabel" alignment="CENTER" text="START" />
-            <Label fx:id="highscoreLabel" text="HIGHSCORE" />
-            <Label fx:id="exitLabel" text="EXIT" />
-            <Button fx:id="playButton" mnemonicParsing="false" onAction="#handlePlayButtonAction" text="play" />
+            <BorderPane prefHeight="112.0" prefWidth="1920.0">
+               <left>
+                  <VBox alignment="CENTER" prefHeight="112.0" prefWidth="472.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label text="Songtitel">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="362.0">
+                           <children>
+                              <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Play" />
+                              <Slider prefHeight="73.0" prefWidth="270.0" style="-fx-pref-height: 1.2px;" stylesheets="@../../files/SliderStyle.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets left="80.0" top="25.0" />
+                     </padding>
+                  </VBox>
+               </left>
+               <right>
+                  <VBox alignment="CENTER_RIGHT" prefHeight="112.0" prefWidth="448.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label>
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="67.0" prefWidth="362.0">
+                           <children>
+                              <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Mute" />
+                              <Slider prefHeight="73.0" prefWidth="270.0" stylesheets="@../../files/SliderStyle.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets right="80.0" top="25.0" />
+                     </padding>
+                  </VBox>
+               </right>
+            </BorderPane>
+            <HBox alignment="CENTER" prefHeight="612.0" prefWidth="1920.0">
+               <children>
+                  <Label text="Songtitel">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-font-weight: bold; -fx-font-size: 100px;" text="FIGHTS" textFill="#353535">
+                     <font>
+                        <Font size="80.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <BorderPane prefHeight="400.0" prefWidth="1920.0">
+               <center>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="322.0" prefWidth="1920.0">
+                     <children>
+                        <Button mnemonicParsing="false" style="-fx-background-color: transperent;" text="CHANGE SONG" textFill="#353535">
+                           <font>
+                              <Font size="50.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="HIGHSCORE" textFill="#353535">
+                           <font>
+                              <Font size="50.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="EXIT" textFill="#353535">
+                           <font>
+                              <Font size="50.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="25.0" />
+                     </padding>
+                  </VBox>
+               </center>
+               <left>
+                  <VBox alignment="BOTTOM_LEFT" prefHeight="148.0" prefWidth="484.0">
+                     <children>
+                        <Label text="SONGS">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="LastSong">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="LastLastSong">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="LastLastLastSong">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="80.0" left="80.0" top="180.0" />
+                     </padding>
+                  </VBox>
+               </left>
+               <right>
+                  <VBox alignment="BOTTOM_RIGHT" prefHeight="148.0" prefWidth="484.0" spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label text="TOP">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                        <Label text="First   ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text="Second   ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text="Third   ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="80.0" right="80.0" />
+                     </padding>
+                  </VBox>
+               </right>
+            </BorderPane>
          </children>
       </VBox>
-      <Rectangle fx:id="bottomRec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="61.0" layoutX="354.0" layoutY="344.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
    </children>
-</Pane>
+</AnchorPane>
