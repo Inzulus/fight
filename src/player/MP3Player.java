@@ -1,5 +1,10 @@
 package player;
 
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
+import ddf.minim.analysis.BeatDetect;
+import ddf.minim.*;
+import de.hsrm.mi.eibo.simpleplayer.MinimHelper;
 import de.hsrm.mi.eibo.simpleplayer.SimpleAudioPlayer;
 import de.hsrm.mi.eibo.simpleplayer.SimpleMinim;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -13,6 +18,12 @@ public class MP3Player {
 
     private SimpleMinim minim = new SimpleMinim();
     private SimpleAudioPlayer audioPlayer;
+
+    public BeatDetect beatDetect;
+    private Minim bigMinim;
+    public AudioPlayer bigAudioPlayer;
+    float kickSize, snareSize, hatSize;
+    public BeatListener bl;
 
     private int currentTrackNumber = 0;
     private Playlist currentPlaylist;
@@ -31,9 +42,34 @@ public class MP3Player {
     //Konstruktor:
     public MP3Player(String filename){
         audioPlayer = minim.loadMP3File(filename);
+        setup();
+    }
+
+    void setup() {
+        MinimHelper minimHelper = new MinimHelper();
+        bigMinim = new Minim(minimHelper);
+        bigAudioPlayer = bigMinim.loadFile("technoBeat.mp3",1024);
+
+        beatDetect = new BeatDetect(bigAudioPlayer.bufferSize(), bigAudioPlayer.sampleRate());
+        beatDetect.setSensitivity(300);
+        kickSize = snareSize = hatSize = 16;
+        bl = new BeatListener(beatDetect, bigAudioPlayer);
     }
 
     public MP3Player(){
+    }
+
+    public void playWithBeatThread(){
+        startTimer();
+        playThread = new Thread(){
+            public void run(){
+                bigAudioPlayer.play();
+            }
+        };
+        playThread.setDaemon(true);
+        playThread.start();
+        isPlaying = true;
+        isPlayingProperty.set(true);
     }
 
 
@@ -67,7 +103,7 @@ public class MP3Player {
         if(timeThread!=null)
             timeThread.interrupt();
         timeThread = new Thread() {
-            public void run() {
+                public void run() {
                 while(!isInterrupted()){
                     //System.out.println(audioPlayer.position());
                     currentTime.setTime(audioPlayer.position()/1000);

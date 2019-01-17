@@ -1,10 +1,14 @@
 package gameview;
 
 import application.Main;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import player.MP3Player;
 
 public class GameViewController {
@@ -17,25 +21,12 @@ public class GameViewController {
         this.player = player;
         this.application = application;
         gameView = new GameView();
-        /*gameView.spawnEnemy.addEventHandler(ActionEvent.ACTION, event -> {
-            gameView.addEnemyRectangle();
-        });
-        gameView.fire.addEventHandler(ActionEvent.ACTION,event -> {
-            gameView.fireProjectile((int)(Math.random()*1920));
-        });
-        gameView.menu.addEventHandler(ActionEvent.ACTION,event -> {
-            application.switchView("mainView");
-        });
-        gameView.addEventHandler(KeyEvent.KEY_PRESSED,event -> {
-            if(event.getCode() == KeyCode.SPACE){
-                gameView.fireProjectile((int)(Math.random()*1920));
-            }
-        });*/
+
         gameView.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if(event.getCode() == KeyCode.H) {
-                    gameView.fireProjectile((int) gameView.player.getX()+12);
+                    gameView.fireProjectile((int) gameView.player.getX()+13);
                 }
                 if(event.getCode()== KeyCode.LEFT){
                     gameView.player.setX(gameView.player.getX()-20);
@@ -47,7 +38,25 @@ public class GameViewController {
 
             }
         });
+
+        player.bl.getIsKickProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                System.out.println(newValue);
+                if(newValue){
+                    System.out.println("KICK");
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            gameView.fireProjectile((int) gameView.player.getX() + 13);
+                            gameView.addEnemyRectangle();
+                        }
+                    });
+                }
+            }
+        });
     }
+
 
     public GameView getGameView(){
         return gameView;

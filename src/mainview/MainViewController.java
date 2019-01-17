@@ -75,6 +75,7 @@ public class MainViewController {
     @FXML
     public void handleFightButton(){
         application.switchView("gameView");
+        player.playWithBeatThread();
     }
 
 
