@@ -36,7 +36,7 @@ public class Main extends Application {
         gameViewController = new GameViewController(player,this);
         Parent root = mainView;
 
-        scene = new Scene(root,400,400);
+        scene = new Scene(root);
         primaryStage.setTitle("FIGHT");
         primaryStage.setScene(scene);
         primaryStage.show();
