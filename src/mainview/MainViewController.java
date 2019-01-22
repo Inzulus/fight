@@ -31,6 +31,9 @@ public class MainViewController {
 
         //Labels:
     @FXML
+    private Label startLabel = new Label();
+
+    @FXML
     private Label sontitel = new Label();
 
     @FXML

@@ -39,10 +39,10 @@ public class AfterGameController {
 
         //Labels:
     @FXML
-    private Label songtitelFeld = new Button();
+    private Label songtitelFeld = new Label();
 
     @FXML
-    private Label scoreFeld = new Button();
+    private Label scoreFeld = new Label();
 
     //Kontruktor
     public AfterGameController () {
