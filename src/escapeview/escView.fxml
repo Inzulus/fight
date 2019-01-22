@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escapeview.ESCController">
+   <children>
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 40%;">
+         <image>
+            <Image url="@../../files/43249-grau-hintergrundbilder-1920x1080-photo.jpg" />
+         </image>
+      </ImageView>
+      <VBox alignment="TOP_CENTER" layoutX="767.0" layoutY="376.0" prefHeight="329.0" prefWidth="386.0" style="-fx-background-color: white; -fx-opacity: 80%;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="bestScore" alignment="CENTER" text="xxxxxx" textFill="#1e6aee">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="yourScore" alignment="TOP_LEFT" text="XXXXXX">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <Button fx:id="continueButton" mnemonicParsing="false" onAction="#continueGame" style="-fx-background-color: transparent;" text="Fortsetzen">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../files/Icons/playButton.png" />
+                     </image></ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets right="15.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="restartButton" mnemonicParsing="false" onAction="#restartSong" style="-fx-background-color: transparent;" text="Neustart">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../files/Icons/baseline_replay_black_18dp.png" />
+                     </image></ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets right="25.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="homeButton" mnemonicParsing="false" onAction="#returnHome" style="-fx-background-color: transparent;" text="Beenden">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../files/Icons/baseline_home_black_18dp.png" />
+                     </image></ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets right="15.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -12,6 +12,7 @@ import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -26,18 +27,63 @@ public class MainViewController {
     private MP3Player player;
     private Main application;
 
+    //FXML Ressourcen aus dem Scene-Builder:
+
+        //Labels:
     @FXML
-    private Label startLabel;
+    private Label sontitel = new Label();
 
     @FXML
-    private Label exitLabel;
+    private Label ueberschriftTop = new Label();
 
     @FXML
-    private Label highscoreLabel;
+    private Label ueberschriftSongs = new Label();
 
+    @FXML
+    private Label platz1 = new Label();
+
+    @FXML
+    private Label platz2 = new Label();
+
+    @FXML
+    private Label platz3 = new Label();
+
+        //Buttons:
     @FXML
     private Button playButton = new Button();
 
+    @FXML
+    private Button fightButton = new Button();
+
+    @FXML
+    private Button muteButton = new Button();
+
+    @FXML
+    private Button songButton1 = new Button();
+
+    @FXML
+    private Button songButton2 = new Button();
+
+    @FXML
+    private Button songButton3 = new Button();
+
+    @FXML
+    private Button changeSongButton = new Button();
+
+    @FXML
+    private Button highscoreButton = new Button();
+
+    @FXML
+    private Button exitButton = new Button();
+
+        //Slider:
+    @FXML
+    private Slider sliderSong = new Slider();
+
+    @FXML
+    private Slider sliderAudio = new Slider();
+
+        //Rectangles:
     @FXML
     private Rectangle rec1= new Rectangle();
 
@@ -47,13 +93,13 @@ public class MainViewController {
     @FXML
     private Rectangle bottomRec = new Rectangle();
 
-    @FXML
-    private Button fightButton = new Button();
-
-
+        //Transitions:
     private TranslateTransition translateTransition = new TranslateTransition();
 
 
+    //CONTROLLER:
+
+        //Kontruktor:
     public MainViewController(MP3Player player, Main application) {
         this.player = player;
         this.application = application;
@@ -67,6 +113,52 @@ public class MainViewController {
 
     }
 
+    //TODO Slider abfangen und reagieren
+
+        //Button Methoden:
+    @FXML
+    private void playMusic() {
+       /*TODO Song soll abgespielt werden können, nachdem ein Song ausgewählt wurde*/
+    }
+
+    @FXML
+    private void muteMusic() {
+        /*TODO Musik muten können*/
+    }
+
+    @FXML
+    private void playSong1() {
+        /*TODO den letzten Song in der Liste abspielen*/
+    }
+
+    @FXML
+    private void playSong2() {
+        /*TODO den vorletzten Song in der Liste abspielen*/
+    }
+
+    @FXML
+    private void playSong3() {
+        /*TODO den drittletzten Song in der Liste abspielen*/
+    }
+
+    @FXML
+    private void changeSong() {
+        /*TODO Song aus dem Windows-Explorer auswählen*/
+    }
+
+    @FXML
+    private void showHighscore() {
+        /*TODO Die Highscores zum ausgewählten Song zeigen
+        * View Change*/
+    }
+
+    @FXML
+    private void exit() {
+        /*TODO Spiel verlassen*/
+    }
+
+
+        //Spiele Mathoden:
     @FXML
     public void handlePlayButtonAction(){
         application.switchView("gameView");
