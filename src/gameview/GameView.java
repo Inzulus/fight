@@ -49,7 +49,6 @@ public class GameView extends BorderPane {
         Rectangle rectangle = new Rectangle((int)(Math.random()*1920),0,20,20);
         enemyList.add(rectangle);
         gameArea.getChildren().add(rectangle);
-
         TranslateTransition translateTransition = new TranslateTransition();
         translateTransition.setDuration(Duration.millis(9000));
         translateTransition.setNode(rectangle);
