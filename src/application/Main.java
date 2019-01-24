@@ -1,11 +1,17 @@
 package application;
 
 import gameview.GameViewController;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import mainview.MainViewController;
 import player.MP3Player;
 
@@ -49,7 +55,22 @@ public class Main extends Application {
                 scene.setRoot(mainView);
                 break;
             case "gameView":
-                scene.setRoot(gameViewController.getGameView());
+                StackPane pain = new StackPane();
+                pain.getChildren().add(mainView);
+                pain.getChildren().add(gameViewController.getGameView());
+
+                pain.getChildren().get(1).translateYProperty().set(-1080);
+                scene.setRoot(pain);
+
+                Timeline timeline = new Timeline();
+                KeyValue kv = new KeyValue(pain.getChildren().get(1).translateYProperty(), 0, Interpolator.EASE_IN);
+                KeyFrame kf = new KeyFrame(Duration.millis(500), kv);
+                timeline.getKeyFrames().add(kf);
+                timeline.setOnFinished(event-> {
+                    pain.getChildren().remove(0);
+                });
+
+                timeline.play();
                 break;
         }
     }

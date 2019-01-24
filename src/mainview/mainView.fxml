@@ -9,169 +9,175 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="100.0" prefHeight="980.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="wrap" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" />
-      <VBox prefHeight="980.0" prefWidth="1920.0">
+      <AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="100.0" prefHeight="980.0">
          <children>
-            <BorderPane>
-               <left>
-                  <VBox alignment="CENTER" prefHeight="112.0" prefWidth="472.0" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox prefHeight="980.0" prefWidth="1920.0">
+               <children>
+                  <BorderPane>
+                     <left>
+                        <VBox alignment="CENTER" prefHeight="112.0" prefWidth="472.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label fx:id="songtitel" text="Songtitel">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="362.0">
+                                 <children>
+                                    <Button fx:id="playButton" mnemonicParsing="false" onAction="#playMusic" style="-fx-background-color: transparent;">
+                                       <graphic>
+                                          <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../files/Icons/playButton.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Slider fx:id="sliderSong" prefHeight="73.0" prefWidth="270.0" style="-fx-pref-height: 1.2px;" stylesheets="@SliderStyle.css" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets left="80.0" top="25.0" />
+                           </padding>
+                        </VBox>
+                     </left>
+                     <right>
+                        <VBox alignment="CENTER_RIGHT" prefHeight="112.0" prefWidth="448.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label>
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="67.0" prefWidth="362.0">
+                                 <children>
+                                    <Button fx:id="muteButton" mnemonicParsing="false" onAction="#muteMusic" style="-fx-background-color: transparent;">
+                                       <graphic>
+                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../files/Icons/muteButton.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Slider fx:id="sliderAudio" prefHeight="73.0" prefWidth="270.0" stylesheets="@SliderStyle.css" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets right="80.0" top="25.0" />
+                           </padding>
+                        </VBox>
+                     </right>
+                  </BorderPane>
+                  <HBox alignment="CENTER" prefHeight="612.0" prefWidth="1920.0">
                      <children>
                         <Label fx:id="songtitel" text="Songtitel">
                            <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="362.0">
-                           <children>
-                              <Button fx:id="playButton" mnemonicParsing="false" onAction="#playMusic" style="-fx-background-color: transparent;">
-                                 <graphic>
-                                    <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../files/Icons/playButton.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic></Button>
-                              <Slider fx:id="sliderSong" prefHeight="73.0" prefWidth="270.0" style="-fx-pref-height: 1.2px;" stylesheets="@SliderStyle.css" />
-                           </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets left="80.0" top="25.0" />
-                     </padding>
-                  </VBox>
-               </left>
-               <right>
-                  <VBox alignment="CENTER_RIGHT" prefHeight="112.0" prefWidth="448.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Label>
-                           <font>
                               <Font size="30.0" />
                            </font>
                         </Label>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="67.0" prefWidth="362.0">
-                           <children>
-                              <Button fx:id="muteButton" mnemonicParsing="false" onAction="#muteMusic" style="-fx-background-color: transparent;">
-                                 <graphic>
-                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../files/Icons/muteButton.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic></Button>
-                              <Slider fx:id="sliderAudio" prefHeight="73.0" prefWidth="270.0" stylesheets="@SliderStyle.css" />
-                           </children>
-                        </HBox>
+                        <Button fx:id="fightButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleFightButton" style="-fx-background-color: transparent; -fx-font-weight: bold; -fx-font-size: 100px;" text="FIGHTS" textFill="#353535">
+                           <font>
+                              <Font size="80.0" />
+                           </font>
+                        </Button>
                      </children>
-                     <padding>
-                        <Insets right="80.0" top="25.0" />
-                     </padding>
-                  </VBox>
-               </right>
-            </BorderPane>
-            <HBox alignment="CENTER" prefHeight="612.0" prefWidth="1920.0">
-               <children>
-                  <Label fx:id="songtitel" text="Songtitel">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="fightButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleFightButton" style="-fx-background-color: transparent; -fx-font-weight: bold; -fx-font-size: 100px;" text="FIGHTS" textFill="#353535">
-                     <font>
-                        <Font size="80.0" />
-                     </font>
-                  </Button>
+                  </HBox>
+                  <BorderPane>
+                     <center>
+                        <VBox alignment="BOTTOM_CENTER" prefHeight="322.0" prefWidth="1920.0">
+                           <children>
+                              <Button fx:id="changeSongButton" mnemonicParsing="false" onAction="#changeSong" style="-fx-background-color: transperent;" text="CHANGE SONG" textFill="#353535">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="highscoreButton" mnemonicParsing="false" onAction="#showHighscore" style="-fx-background-color: transparent;" text="HIGHSCORE" textFill="#353535">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;" text="EXIT" textFill="#353535">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="25.0" />
+                           </padding>
+                        </VBox>
+                     </center>
+                     <left>
+                        <VBox alignment="BOTTOM_LEFT" prefHeight="148.0" prefWidth="484.0">
+                           <children>
+                              <Label fx:id="ueberschriftSongs" text="SONGS">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="songButton1" mnemonicParsing="false" onAction="#playSong1" style="-fx-background-color: transparent;" text="LastSong">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="songButton2" mnemonicParsing="false" onAction="#playSong2" style="-fx-background-color: transparent;" text="LastLastSong">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="songButton3" mnemonicParsing="false" onAction="#playSong3" style="-fx-background-color: transparent;" text="LastLastLastSong">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="80.0" left="80.0" top="180.0" />
+                           </padding>
+                        </VBox>
+                     </left>
+                     <right>
+                        <VBox alignment="BOTTOM_RIGHT" prefHeight="148.0" prefWidth="484.0" spacing="10.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label fx:id="ueberschriftTop" text="TOP">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="platz1" text="First   ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="platz2" text="Second   ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="platz3" text="Third   ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="80.0" right="80.0" />
+                           </padding>
+                        </VBox>
+                     </right>
+                  </BorderPane>
                </children>
-            </HBox>
-            <BorderPane>
-               <center>
-                  <VBox alignment="BOTTOM_CENTER" prefHeight="322.0" prefWidth="1920.0">
-                     <children>
-                        <Button fx:id="changeSongButton" mnemonicParsing="false" onAction="#changeSong" style="-fx-background-color: transperent;" text="CHANGE SONG" textFill="#353535">
-                           <font>
-                              <Font size="50.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="highscoreButton" mnemonicParsing="false" onAction="#showHighscore" style="-fx-background-color: transparent;" text="HIGHSCORE" textFill="#353535">
-                           <font>
-                              <Font size="50.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;" text="EXIT" textFill="#353535">
-                           <font>
-                              <Font size="50.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <padding>
-                        <Insets bottom="25.0" />
-                     </padding>
-                  </VBox>
-               </center>
-               <left>
-                  <VBox alignment="BOTTOM_LEFT" prefHeight="148.0" prefWidth="484.0">
-                     <children>
-                        <Label fx:id="ueberschriftSongs" text="SONGS">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="songButton1" mnemonicParsing="false" onAction="#playSong1" style="-fx-background-color: transparent;" text="LastSong">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="songButton2" mnemonicParsing="false" onAction="#playSong2" style="-fx-background-color: transparent;" text="LastLastSong">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="songButton3" mnemonicParsing="false" onAction="#playSong3" style="-fx-background-color: transparent;" text="LastLastLastSong">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <padding>
-                        <Insets bottom="80.0" left="80.0" top="180.0" />
-                     </padding>
-                  </VBox>
-               </left>
-               <right>
-                  <VBox alignment="BOTTOM_RIGHT" prefHeight="148.0" prefWidth="484.0" spacing="10.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Label fx:id="ueberschriftTop" text="TOP">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="platz1" text="First   ">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="platz2" text="Second   ">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="platz3" text="Third   ">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets bottom="80.0" right="80.0" />
-                     </padding>
-                  </VBox>
-               </right>
-            </BorderPane>
+            </VBox>
          </children>
-      </VBox>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

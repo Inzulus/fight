@@ -13,7 +13,9 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -28,6 +30,13 @@ public class MainViewController {
     private Main application;
 
     //FXML Ressourcen aus dem Scene-Builder:
+
+        //Wraps:
+    @FXML
+    private AnchorPane anchor = new AnchorPane();
+
+    @FXML
+    private StackPane parentContainer = new StackPane();
 
         //Labels:
     @FXML
@@ -184,7 +193,7 @@ public class MainViewController {
         }
     }
 
-    public void play(){
+    public void play() {
         //player.play();
 
         System.out.println(rec1.getY());
@@ -209,9 +218,14 @@ public class MainViewController {
             }
         });
         translateTransition.play();
-
-
     }
+
+
+        //GETTER:
+
+        public StackPane getParentContainer() { return parentContainer; }
+
+        public AnchorPane getAnchor() { return anchor; }
 
 
 
