@@ -8,8 +8,6 @@ import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import ddf.minim.analysis.BeatDetect;
 import de.hsrm.mi.eibo.simpleplayer.MinimHelper;
-import de.hsrm.mi.eibo.simpleplayer.SimpleAudioPlayer;
-import de.hsrm.mi.eibo.simpleplayer.SimpleMinim;
 import javafx.beans.property.SimpleBooleanProperty;
 
 import java.io.IOException;
@@ -19,12 +17,9 @@ import java.util.List;
 
 public class MP3Player {
 
-    private SimpleMinim minim = new SimpleMinim();
-    private SimpleAudioPlayer audioPlayer;
-
     public BeatDetect beatDetect;
-    private Minim bigMinim;
-    public AudioPlayer bigAudioPlayer;
+    private Minim minim;
+    public AudioPlayer audioPlayer;
     float kickSize, snareSize, hatSize;
     public BeatListener bl;
 
@@ -41,17 +36,16 @@ public class MP3Player {
 
     //Konstruktor:
     public MP3Player(String filename){
-        audioPlayer = minim.loadMP3File(filename);
         loadTrack(filename);
 
         MinimHelper minimHelper = new MinimHelper();
-        bigMinim = new Minim(minimHelper);
-        bigAudioPlayer = bigMinim.loadFile(filename,1024);
+        minim = new Minim(minimHelper);
+        audioPlayer = minim.loadFile(filename,1024);
 
-        beatDetect = new BeatDetect(bigAudioPlayer.bufferSize(), bigAudioPlayer.sampleRate());
+        beatDetect = new BeatDetect(audioPlayer.bufferSize(), audioPlayer.sampleRate());
         beatDetect.setSensitivity(300);
         kickSize = snareSize = hatSize = 16;
-        bl = new BeatListener(beatDetect, bigAudioPlayer);
+        bl = new BeatListener(beatDetect, audioPlayer);
     }
 
 
@@ -82,7 +76,7 @@ public class MP3Player {
         startTimer();
         playThread = new Thread(){
             public void run(){
-                bigAudioPlayer.play();
+                audioPlayer.play();
             }
         };
         playThread.setDaemon(true);
@@ -127,24 +121,6 @@ public class MP3Player {
         timeThread.start();
     }
 
-    /*public void playThread(){
-        startTimer();
-        //fireInfoEvent();
-        playThread = new Thread(){
-            public void run(){
-                audioPlayer.play();
-                if(isPlaying)
-                    onCompletion();
-            }
-        };
-        playThread.setDaemon(true);
-        playThread.start();
-        isPlaying = true;
-    }*/
-
-
-    //Play-Methoden:
-    public void skip(int seconds){ audioPlayer.skip(seconds*1000); }
 
 
     //Lautstärke:
@@ -171,6 +147,12 @@ public class MP3Player {
         isPlaying = false;
         isPlayingProperty.set(false);
         audioPlayer.pause();
+    }
+
+    public void resume(){
+        isPlaying = true;
+        isPlayingProperty.set(true);
+        audioPlayer.play();
     }
 
 
