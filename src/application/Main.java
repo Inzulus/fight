@@ -1,6 +1,7 @@
 package application;
 
 import gameview.GameViewController;
+import gameview.GameViewController2;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -19,15 +20,17 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+
     private FXMLLoader loader;
     private MP3Player player;
     private Scene scene;
-    private GameViewController gameViewController;
+    private GameViewController2 gameViewController;
     private MainViewController mainViewController;
     private Parent mainView;
 
     public void init() {
-        player = new MP3Player("brain.mp3");
+        player = new MP3Player("technoBeat.mp3");
+
     }
 
     @Override
@@ -37,7 +40,7 @@ public class Main extends Application {
         loader.setController(mainViewController);
         mainView = loader.load();
 
-        gameViewController = new GameViewController(player,this);
+        gameViewController = new GameViewController2(player,this);
         Parent root = mainView;
 
         scene = new Scene(root);
