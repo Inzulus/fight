@@ -1,16 +1,19 @@
 package player;
 
+import com.mpatric.mp3agic.ID3v1;
+import com.mpatric.mp3agic.InvalidDataException;
+import com.mpatric.mp3agic.Mp3File;
+import com.mpatric.mp3agic.UnsupportedTagException;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import ddf.minim.analysis.BeatDetect;
-import ddf.minim.*;
 import de.hsrm.mi.eibo.simpleplayer.MinimHelper;
 import de.hsrm.mi.eibo.simpleplayer.SimpleAudioPlayer;
 import de.hsrm.mi.eibo.simpleplayer.SimpleMinim;
 import javafx.beans.property.SimpleBooleanProperty;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -25,8 +28,6 @@ public class MP3Player {
     float kickSize, snareSize, hatSize;
     public BeatListener bl;
 
-    private int currentTrackNumber = 0;
-    private Playlist currentPlaylist;
     private List listener = new ArrayList();
 
     private Thread playThread;
@@ -35,13 +36,13 @@ public class MP3Player {
     private SimpleBooleanProperty isPlayingProperty = new SimpleBooleanProperty();
 
     private boolean isPlaying = false;
-    private boolean shuffle;
-
+    private Track currentTrack;
 
 
     //Konstruktor:
     public MP3Player(String filename){
         audioPlayer = minim.loadMP3File(filename);
+        loadTrack(filename);
 
         MinimHelper minimHelper = new MinimHelper();
         bigMinim = new Minim(minimHelper);
@@ -57,6 +58,26 @@ public class MP3Player {
     public MP3Player(){
     }
 
+    //Erzeugen von Tracks:
+    public void loadTrack(String filename) {
+
+        try{
+            Mp3File mp3file = new Mp3File(filename);
+            ID3v1 id3v1Tag = mp3file.getId3v1Tag();
+
+            currentTrack = new Track(id3v1Tag.getTitle(), id3v1Tag.getArtist(), filename, mp3file.getLengthInSeconds());
+
+        } catch (InvalidDataException e) {
+            System.out.println("Invalid Mp3File");
+        } catch (UnsupportedTagException e) {
+            System.out.println("Unsupported Tags");
+        } catch (IOException x) {
+            System.err.format("IOException: %s%n", x);
+        }
+    }
+
+
+    //Haupt-Play Methode:
     public void playWithBeatThread(){
         startTimer();
         playThread = new Thread(){
@@ -72,27 +93,15 @@ public class MP3Player {
 
 
     //feuert das Infoevent um das Interface vom Songwechsel zu informieren:
-    private synchronized void fireInfoEvent(){
+    /*private synchronized void fireInfoEvent(){
         InfoEvent ie = new InfoEvent(this,getCurrentTrack());
         Iterator listener = this.listener.iterator();
         while(listener.hasNext()){
             ((InfoListener)(listener.next())).infoReceived(ie);
         }
     }
-
     public synchronized void addInfoListener(InfoListener il){ listener.add(il); }
-
-    public synchronized void removeInfoListener(InfoListener il){ listener.remove(il); }
-
-
-    //Playlist laden:
-    public void loadPlaylist(String filename) {
-        PlaylistManager plManager = new PlaylistManager();
-        currentPlaylist = plManager.getPlaylist(filename);
-        audioPlayer = minim.loadMP3File(currentPlaylist.getTrack(currentTrackNumber).getPath());
-
-        info();
-    }
+    public synchronized void removeInfoListener(InfoListener il){ listener.remove(il); }*/
 
 
     //Start_Methoden zum abspielen eines Songs:
@@ -116,10 +125,9 @@ public class MP3Player {
         };
         timeThread.setDaemon(true);
         timeThread.start();
-
     }
 
-    public void playThread(){
+    /*public void playThread(){
         startTimer();
         //fireInfoEvent();
         playThread = new Thread(){
@@ -132,86 +140,11 @@ public class MP3Player {
         playThread.setDaemon(true);
         playThread.start();
         isPlaying = true;
-    }
+    }*/
 
 
     //Play-Methoden:
-    public void play(){
-        //info();
-        isPlaying = true;
-        isPlayingProperty.set(true);
-        playThread();
-    }
-
-
-    public void play(Track track,int currentTrackNumber){
-        isPlaying = true;
-
-        isPlayingProperty.set(true);
-        this.currentTrackNumber = currentTrackNumber;
-        minim.stop();
-        audioPlayer = minim.loadMP3File(track.getPath());
-        playThread();
-    }
-
-
-    //Überspringen:
-    public void next() {
-        minim.stop();
-        if(shuffle){
-            currentTrackNumber = (int) (Math.random()*currentPlaylist.getTrackCount());
-        }
-        else if(currentTrackNumber < currentPlaylist.getTrackCount() - 1){
-            currentTrackNumber++;
-        }
-        else{
-            currentTrackNumber=0;
-
-        }
-        audioPlayer = minim.loadMP3File(currentPlaylist.getTrack(currentTrackNumber).getPath());
-        info();
-        fireInfoEvent();
-        if(isPlaying)
-            playThread();
-    }
-
-    public void prev(){
-        minim.stop();
-        if(shuffle){
-            currentTrackNumber = (int) (Math.random()*currentPlaylist.getTrackCount());
-        }
-        else if(currentTrackNumber==0) {
-            currentTrackNumber = currentPlaylist.getTrackCount()-1;
-        }
-        else{
-            currentTrackNumber--;
-        }
-        audioPlayer = minim.loadMP3File(currentPlaylist.getTrack(currentTrackNumber).getPath());
-        info();
-        if(isPlaying)
-            playThread();
-    }
-
     public void skip(int seconds){ audioPlayer.skip(seconds*1000); }
-
-
-    //normaler Loop:
-    public void onCompletion(){
-        if(shuffle){
-            currentTrackNumber = (int) (Math.random()*currentPlaylist.getTrackCount());
-        }
-        else if(currentTrackNumber < currentPlaylist.getTrackCount() - 1){
-            currentTrackNumber++;
-        }
-        else{
-            currentTrackNumber=0;
-
-        }
-        audioPlayer = minim.loadMP3File(currentPlaylist.getTrack(currentTrackNumber).getPath());
-        info();
-        fireInfoEvent();
-        playThread();
-    }
 
 
     //Lautstärke:
@@ -247,38 +180,25 @@ public class MP3Player {
         minim.stop();
     }
 
+
     //Artist und Sontitel INFO:
     public void info(){
-        System.out.print(currentPlaylist.getTrack(currentTrackNumber).getArtist()+" - ");
-        System.out.println(currentPlaylist.getTrack(currentTrackNumber).getName());
+        //TODO
     }
 
 
     //DAVID SUETTA
-    public void setShuffle(boolean shuffle) { this.shuffle = shuffle; }
-
     public void setIsPlayingProperty(boolean playing){
         isPlayingProperty.set(playing);
     }
 
-    public void setCurrentTrackNumber(int currentTrackNumber) {
-        this.currentTrackNumber = currentTrackNumber;
-    }
 
     //DAVID GUETTA
-
-    public int getCurrentTrackNumber(){
-        return currentTrackNumber;
-    }
     public SimpleBooleanProperty getIsPlayingProperty(){
         return isPlayingProperty;
     }
     public TimeProperty getCurrentTimeProperty(){ return currentTime; }
-
-    public Playlist getCurrentPlaylist() { return currentPlaylist; }
-
-    public Track getCurrentTrack(){ return currentPlaylist.getTrack(currentTrackNumber); }
-
+    public Track getCurrentTrack(){ return currentTrack; }
     public boolean isPlaying(){ return isPlaying; }
 
 }

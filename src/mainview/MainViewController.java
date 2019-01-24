@@ -2,32 +2,25 @@ package mainview;
 
 import application.Main;
 import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import player.MP3Player;
 
-import java.awt.*;
-import java.io.IOException;
+import java.io.File;
 
 public class MainViewController {
 
     private MP3Player player;
     private Main application;
+    private FileChooser fileChooser = new FileChooser();
+    private Stage primaryStage;
 
     //FXML Ressourcen aus dem Scene-Builder:
 
@@ -43,7 +36,10 @@ public class MainViewController {
     private Label startLabel = new Label();
 
     @FXML
-    private Label sontitel = new Label();
+    private Label songTitelM = new Label();
+
+    @FXML
+    private Label songTitelL = new Label();
 
     @FXML
     private Label ueberschriftTop = new Label();
@@ -84,7 +80,6 @@ public class MainViewController {
 
     @FXML
     private Button highscoreButton = new Button();
-
     @FXML
     private Button exitButton = new Button();
 
@@ -112,18 +107,16 @@ public class MainViewController {
     //CONTROLLER:
 
         //Kontruktor:
-    public MainViewController(MP3Player player, Main application) {
+    public MainViewController(MP3Player player, Main application, Stage primaryStage) {
         this.player = player;
         this.application = application;
-        player.getCurrentTimeProperty().timeProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                Platform.runLater(()->startLabel.setText(String.valueOf(newValue.intValue())));
-            }
-        });
-
-
+        this.primaryStage = primaryStage;
     }
+
+    public void initialize() {
+        info();
+    }
+
 
     //TODO Slider abfangen und reagieren
 
@@ -155,7 +148,9 @@ public class MainViewController {
 
     @FXML
     private void changeSong() {
-        /*TODO Song aus dem Windows-Explorer auswählen*/
+        File file = fileChooser.showOpenDialog(primaryStage);
+        player.loadTrack(file.getPath());
+        info();
     }
 
     @FXML
@@ -172,62 +167,22 @@ public class MainViewController {
 
         //Spiele Mathoden:
     @FXML
-    public void handlePlayButtonAction(){
-        application.switchView("gameView");
-    }
-
-    @FXML
     public void handleFightButton(){
         application.switchView("gameView");
         player.playWithBeatThread();
     }
 
 
-    public void collision(){
-        Bounds bound1 = rec1.getBoundsInParent();
-        Bounds bound2 = bottomRec.getBoundsInParent();
-        if(bound1.intersects(bound2)){
-            rec1.setFill(Color.RED);
-            rec2.setFill(Color.PINK);
-            translateTransition.stop();
-        }
-    }
-
-    public void play() {
-        //player.play();
-
-        System.out.println(rec1.getY());
-        System.out.println(rec1.getTranslateY());
-        System.out.println(rec1.getLayoutY());
-
-
-        translateTransition.setDuration(Duration.millis(10000));
-        translateTransition.setNode(rec1);
-        translateTransition.setByY(1000);
-
-        translateTransition.setCycleCount(1);
-        translateTransition.setAutoReverse(false);
-
-        rec1.translateYProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                //System.out.println("changed");
-                collision();
-
-
-            }
-        });
-        translateTransition.play();
+    //Others:
+    private void info() {
+        songTitelM.setText(player.getCurrentTrack().getName());
+        songTitelL.setText(player.getCurrentTrack().getName());
     }
 
 
-        //GETTER:
+    //GETTER:
+    public StackPane getParentContainer() { return parentContainer; }
 
-        public StackPane getParentContainer() { return parentContainer; }
-
-        public AnchorPane getAnchor() { return anchor; }
-
-
-
+    public AnchorPane getAnchor() { return anchor; }
 
 }

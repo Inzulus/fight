@@ -1,6 +1,7 @@
 package player;
 
-import ddf.minim.*;
+import ddf.minim.AudioListener;
+import ddf.minim.AudioPlayer;
 import ddf.minim.analysis.BeatDetect;
 import javafx.beans.property.SimpleBooleanProperty;
 

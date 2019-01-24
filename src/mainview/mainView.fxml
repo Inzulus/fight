@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
-<StackPane fx:id="wrap" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.text.*?>
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="100.0" prefHeight="980.0">
          <children>
@@ -20,7 +16,7 @@
                      <left>
                         <VBox alignment="CENTER" prefHeight="112.0" prefWidth="472.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label fx:id="songtitel" text="Songtitel">
+                              <Label fx:id="songTitelL" text="Songtitel">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -55,15 +51,14 @@
                               </Label>
                               <HBox alignment="CENTER_RIGHT" prefHeight="67.0" prefWidth="362.0">
                                  <children>
-                                    <Button fx:id="muteButton" mnemonicParsing="false" onAction="#muteMusic" style="-fx-background-color: transparent;">
+                                    <Button fx:id="muteButton" mnemonicParsing="false" onAction="#muteMusic" style="-fx-background-color: transparent;" stylesheets="@../application/ButtonIconsStyle.css">
                                        <graphic>
-                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../../files/Icons/muteButton.png" />
                                              </image>
                                           </ImageView>
-                                       </graphic>
-                                    </Button>
+                                       </graphic></Button>
                                     <Slider fx:id="sliderAudio" prefHeight="73.0" prefWidth="270.0" stylesheets="@SliderStyle.css" />
                                  </children>
                               </HBox>
@@ -76,7 +71,7 @@
                   </BorderPane>
                   <HBox alignment="CENTER" prefHeight="612.0" prefWidth="1920.0">
                      <children>
-                        <Label fx:id="songtitel" text="Songtitel">
+                        <Label fx:id="songTitelM" text="Songtitel">
                            <font>
                               <Font size="30.0" />
                            </font>
