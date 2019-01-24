@@ -42,19 +42,17 @@ public class MP3Player {
     //Konstruktor:
     public MP3Player(String filename){
         audioPlayer = minim.loadMP3File(filename);
-        setup();
-    }
 
-    void setup() {
         MinimHelper minimHelper = new MinimHelper();
         bigMinim = new Minim(minimHelper);
-        bigAudioPlayer = bigMinim.loadFile("technoBeat.mp3",1024);
+        bigAudioPlayer = bigMinim.loadFile(filename,1024);
 
         beatDetect = new BeatDetect(bigAudioPlayer.bufferSize(), bigAudioPlayer.sampleRate());
         beatDetect.setSensitivity(300);
         kickSize = snareSize = hatSize = 16;
         bl = new BeatListener(beatDetect, bigAudioPlayer);
     }
+
 
     public MP3Player(){
     }
@@ -144,6 +142,7 @@ public class MP3Player {
         isPlayingProperty.set(true);
         playThread();
     }
+
 
     public void play(Track track,int currentTrackNumber){
         isPlaying = true;

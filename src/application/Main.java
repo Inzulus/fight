@@ -1,6 +1,7 @@
 package application;
 
 import gameview.GameViewController;
+import gameview.GameViewController2;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -64,7 +65,7 @@ public class Main extends Application {
 
                 Timeline timeline = new Timeline();
                 KeyValue kv = new KeyValue(pain.getChildren().get(1).translateYProperty(), 0, Interpolator.EASE_IN);
-                KeyFrame kf = new KeyFrame(Duration.millis(500), kv);
+                KeyFrame kf = new KeyFrame(Duration.millis(1000), kv);
                 timeline.getKeyFrames().add(kf);
                 timeline.setOnFinished(event-> {
                     pain.getChildren().remove(0);

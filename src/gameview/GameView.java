@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class GameView extends BorderPane {
@@ -22,6 +23,7 @@ public class GameView extends BorderPane {
     private Rectangle topBar;
     protected Rectangle player;
     private Pane gameArea;
+    private Canvas canvas;
     protected Button spawnEnemy = new Button("spawnEnemy");
     protected Button fire = new Button("fire");
     protected Button menu = new Button("menu");
