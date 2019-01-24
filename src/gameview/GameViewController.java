@@ -10,15 +10,32 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import player.MP3Player;
 
+import java.util.ArrayList;
+
 public class GameViewController {
     private GameView gameView;
     private MP3Player player;
     private Main application;
+    private ArrayList<Highscore> highscoreList = new ArrayList<>();
 
-    public GameViewController(MP3Player player, Main application) {
+
+
+    public GameViewController(MP3Player player, Main application,ArrayList<Highscore> highscoreList) {
         this.player = player;
         this.application = application;
+        this.highscoreList = highscoreList;
         gameView = new GameView();
+        player.getIsFinished().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                System.out.println(newValue);
+                if(newValue){
+                    gameView.stopGame();
+                    highscoreList.add(new Highscore(player.getCurrentTrack(), gameView.currentHighscore));
+                    application.switchView("afterGameView");
+                }
+            }
+        });
         player.bl.getIsKickProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {

@@ -32,6 +32,7 @@ public class MP3Player {
 
     private boolean isPlaying = false;
     private Track currentTrack;
+    private SimpleBooleanProperty isFinished = new SimpleBooleanProperty(false);
 
 
     //Konstruktor:
@@ -74,9 +75,12 @@ public class MP3Player {
     //Haupt-Play Methode:
     public void playWithBeatThread(){
         startTimer();
+        isFinished.set(false);
         playThread = new Thread(){
             public void run(){
                 audioPlayer.play();
+                //isFinished.set(true);
+                //System.out.println("complete");
             }
         };
         playThread.setDaemon(true);
@@ -182,5 +186,8 @@ public class MP3Player {
     public TimeProperty getCurrentTimeProperty(){ return currentTime; }
     public Track getCurrentTrack(){ return currentTrack; }
     public boolean isPlaying(){ return isPlaying; }
+    public SimpleBooleanProperty getIsFinished(){
+        return isFinished;
+    }
 
 }

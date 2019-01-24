@@ -49,7 +49,6 @@ public class GameView extends BorderPane {
         animationTimer = new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 double elapsedTime = (currentNanoTime - lastSystemTime) / 1000000000.0;
-                System.out.println(elapsedTime);
                 lastSystemTime = currentNanoTime;
 
                 //damit die Animation nach einer Pause nicht nach vorne springt
@@ -82,6 +81,13 @@ public class GameView extends BorderPane {
     public void startGame(){
         animationTimer.start();
         currentHighscore = 0;
+    }
+
+    public void stopGame(){
+        animationTimer.stop();
+        enemyEntities.removeAll(enemyEntities);
+        allEntities.removeAll(allEntities);
+        projectileEntities.removeAll(projectileEntities);
     }
 
     public void addGameEntity(GameEntity entity){

@@ -1,6 +1,8 @@
 package application;
 
+import aftergameview.AfterGameController;
 import gameview.GameViewController;
+import gameview.Highscore;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -16,6 +18,7 @@ import mainview.MainViewController;
 import player.MP3Player;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -25,7 +28,10 @@ public class Main extends Application {
     private Scene scene;
     private GameViewController gameViewController;
     private MainViewController mainViewController;
+    private AfterGameController afterGameController;
     private Parent mainView;
+    private Parent afterGameView;
+    private ArrayList<Highscore> highscoreList = new ArrayList<>();
 
     public void init() {
         player = new MP3Player("technoBeat.mp3");
@@ -34,12 +40,17 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        loader = new FXMLLoader(getClass().getResource("/aftergameview/afterGameView.fxml"));
+        afterGameController = new AfterGameController(this,highscoreList);
+        loader.setController(afterGameController);
+        afterGameView = loader.load();
+
         loader = new FXMLLoader(getClass().getResource("/mainview/mainView.fxml"));
         mainViewController = new MainViewController(player,this, primaryStage);
         loader.setController(mainViewController);
         mainView = loader.load();
 
-        gameViewController = new GameViewController(player,this);
+        gameViewController = new GameViewController(player,this,highscoreList);
         Parent root = mainView;
 
         scene = new Scene(root);
@@ -51,6 +62,9 @@ public class Main extends Application {
 
     public void switchView(String viewName){
         switch (viewName){
+            case "afterGameView":
+                scene.setRoot(afterGameView);
+                break;
             case "mainView":
                 scene.setRoot(mainView);
                 break;

@@ -1,14 +1,21 @@
 package aftergameview;
 
+import application.Main;
+import gameview.Highscore;
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.util.ArrayList;
+
 
 public class AfterGameController {
 
     //Attribute:
+    private Main application;
+    private ArrayList<Highscore> highscoreList = new ArrayList<>();
 
     //FXML Ressourcen:
 
@@ -31,8 +38,9 @@ public class AfterGameController {
     private Label scoreFeld = new Label();
 
     //Kontruktor
-    public AfterGameController () {
-        //TODO viel viel erzeugen
+    public AfterGameController (Main application, ArrayList<Highscore> highscoreList) {
+        this.application = application;
+        this.highscoreList = highscoreList;
     }
 
 
