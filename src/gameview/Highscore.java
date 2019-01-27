@@ -15,7 +15,7 @@ public class Highscore {
         spielerName = "";
     }
 
-    public  Highscore(Track track,String name, int score){
+    public Highscore(Track track,String name, int score){
         this.track = track;
         this.score = score;
         this.spielerName = name;

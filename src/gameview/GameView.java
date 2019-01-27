@@ -30,6 +30,8 @@ public class GameView extends BorderPane {
 
     public GameView(){
 
+        //TODO StackPane mit gameOverlay!!
+
         spieler = new GameEntity(1920/2,800,30,30,0,0,Color.PINK);
         allEntities.add(spieler);
         wrapPane = new Pane();

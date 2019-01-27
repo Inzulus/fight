@@ -2,6 +2,7 @@ package mainview;
 
 import application.Main;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -115,6 +116,11 @@ public class MainViewController {
 
     public void initialize() {
         info();
+        sliderStandart();
+
+        sliderAudio.valueProperty().addListener((observable,oldValue,newValues)->{
+            player.volume(newValues.floatValue());
+        });
     }
 
 
@@ -123,12 +129,14 @@ public class MainViewController {
         //Button Methoden:
     @FXML
     private void playMusic() {
-       /*TODO Song soll abgespielt werden können, nachdem ein Song ausgewählt wurde*/
+        if (player.isPlaying()) {
+            player.pause();
+        } else { player.playWithBeatThread();}
     }
 
     @FXML
     private void muteMusic() {
-        /*TODO Musik muten können*/
+        player.mute();
     }
 
     @FXML
@@ -161,7 +169,7 @@ public class MainViewController {
 
     @FXML
     private void exit() {
-        /*TODO Spiel verlassen*/
+        primaryStage.close();
     }
 
 
@@ -176,6 +184,12 @@ public class MainViewController {
     private void info() {
         songTitelM.setText(player.getCurrentTrack().getName());
         songTitelL.setText(player.getCurrentTrack().getName());
+    }
+
+    private void sliderStandart() {
+        sliderAudio.setMin(0);
+        sliderAudio.setMax(2);
+        sliderAudio.adjustValue(1);
     }
 
 

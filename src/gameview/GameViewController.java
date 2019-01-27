@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -18,6 +19,7 @@ public class GameViewController {
     private Main application;
     private ArrayList<Highscore> highscoreList = new ArrayList<>();
 
+    //FXML Ressources:
 
 
     public GameViewController(MP3Player player, Main application,ArrayList<Highscore> highscoreList) {

@@ -31,6 +31,7 @@ public class Main extends Application {
     private AfterGameController afterGameController;
     private Parent mainView;
     private Parent afterGameView;
+    //private Parent gameOverlay;
     private ArrayList<Highscore> highscoreList = new ArrayList<>();
 
     public void init() {
@@ -49,6 +50,11 @@ public class Main extends Application {
         mainViewController = new MainViewController(player,this, primaryStage);
         loader.setController(mainViewController);
         mainView = loader.load();
+
+        /*loader = new FXMLLoader(getClass().getResource("/gameview/gameOverlay.fxml"));
+        gameViewController = new GameViewController(player,this,highscoreList);
+        loader.setController(gameViewController);
+        gameOverlay = loader.load();*/
 
         gameViewController = new GameViewController(player,this,highscoreList);
         Parent root = mainView;
@@ -70,6 +76,11 @@ public class Main extends Application {
                 break;
             case "gameView":
                 StackPane pain = new StackPane();
+                /*StackPane game = new StackPane();
+
+                game.getChildren().add(gameViewController.getGameView());
+                game.getChildren().add(gameOverlay);*/
+
                 pain.getChildren().add(mainView);
                 pain.getChildren().add(gameViewController.getGameView());
 
