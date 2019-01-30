@@ -1,17 +1,13 @@
 package gameview;
 
 import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 
@@ -26,13 +22,15 @@ public class GameView extends BorderPane {
     private Long lastSystemTime;
     Label highscoreLabel;
     int currentHighscore;
+    GraphicsContext graphicsContext;
+    boolean isRunning;
 
 
     public GameView(){
 
         //TODO StackPane mit gameOverlay!!
 
-        spieler = new GameEntity(1920/2,800,30,30,0,0,Color.PINK);
+        spieler = new GameEntity(1920/2,900,30,30,0,0,Color.PINK);
         allEntities.add(spieler);
         wrapPane = new Pane();
         highscoreLabel = new Label("XXXXXXXX");
@@ -43,7 +41,7 @@ public class GameView extends BorderPane {
         this.setTop(highscoreLabel);
         wrapPane.getChildren().addAll(canvas);
 
-        GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+        graphicsContext = canvas.getGraphicsContext2D();
 
 
         lastSystemTime = System.nanoTime();
@@ -81,11 +79,13 @@ public class GameView extends BorderPane {
         };
     }
     public void startGame(){
+        isRunning = true;
         animationTimer.start();
         currentHighscore = 0;
     }
 
     public void stopGame(){
+        isRunning = false;
         animationTimer.stop();
         enemyEntities.removeAll(enemyEntities);
         allEntities.removeAll(allEntities);

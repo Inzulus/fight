@@ -5,7 +5,6 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -31,7 +30,7 @@ public class GameViewController {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 System.out.println(newValue);
-                if(newValue){
+                if(newValue && gameView.isRunning){
                     gameView.stopGame();
                     highscoreList.add(new Highscore(player.getCurrentTrack(), gameView.currentHighscore));
                     application.switchView("afterGameView");
@@ -52,32 +51,29 @@ public class GameViewController {
                 }
             }
         });
-        gameView.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode()==KeyCode.H){
-                    player.pause();
-                    gameView.animationTimer.stop();
-                }
-                if (event.getCode()==KeyCode.J){
-                    player.resume();
-                    gameView.animationTimer.start();
-                }
-            }
-        });
+
 
         gameView.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if(event.getCode()== KeyCode.LEFT){
-                    gameView.spieler.speedX=-100;
+                    gameView.spieler.speedX=-200;
                 }
                 if(event.getCode()== KeyCode.RIGHT){
-                    gameView.spieler.speedX=100;
+                    gameView.spieler.speedX=200;
                 }
 
-                if (event.getCode()==KeyCode.J){
-                    gameView.animationTimer.start();
+                if (event.getCode()==KeyCode.ESCAPE){
+                    if (!gameView.isRunning){
+                        gameView.isRunning = true;
+                        player.resume();
+                        gameView.animationTimer.start();
+                    }
+                    else {
+                        gameView.isRunning = false;
+                        player.pause();
+                        gameView.animationTimer.stop();
+                    }
                 }
             }
         });

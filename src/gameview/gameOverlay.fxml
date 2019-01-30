@@ -20,12 +20,12 @@
                         <Insets top="10.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@../../files/Icons/1513793018988107627zelda-heart-meter.hi.png" />
+                        <Image url="@../files/Icons/1513793018988107627zelda-heart-meter.hi.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../files/Icons/1513793018988107627zelda-heart-meter.hi.png" />
+                        <Image url="@../files/Icons/1513793018988107627zelda-heart-meter.hi.png" />
                      </image>
                      <HBox.margin>
                         <Insets top="10.0" />
@@ -33,7 +33,7 @@
                   </ImageView>
                   <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../files/Icons/1513793018988107627zelda-heart-meter.hi.png" />
+                        <Image url="@../files/Icons/1513793018988107627zelda-heart-meter.hi.png" />
                      </image>
                      <HBox.margin>
                         <Insets top="10.0" />

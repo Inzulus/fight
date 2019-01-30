@@ -15,7 +15,7 @@ public class AfterGameController {
 
     //Attribute:
     private Main application;
-    private ArrayList<Highscore> highscoreList = new ArrayList<>();
+    private ArrayList<Highscore> highscoreList;
 
     //FXML Ressourcen:
 
@@ -48,11 +48,24 @@ public class AfterGameController {
     @FXML
     private void speicherEingabe() {
         //TODO Eingabe von Textfeld speichern
+        System.out.println("speicherEingabe");
+        Highscore aktuellerHighscore = highscoreList.remove(highscoreList.size()-1);
+        aktuellerHighscore.setSpielerName(eingabeTextfeld.getText());
+        highscoreList.add(aktuellerHighscore);
+        highscoreList.sort(Highscore::compareTo);
+        for(Highscore hs : highscoreList){
+            System.out.println(hs.getSpielerName());
+            System.out.println(hs.getScore());
+            System.out.println(hs.getTrack());
+        }
+        application.switchView("mainView");
     }
 
     @FXML
     private void returnHome() {
         //TODO zum Hauptmenü zurückkehren
+        System.out.println("returnHome");
+        application.switchView("mainView");
     }
 
 

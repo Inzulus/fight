@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="100.0" prefHeight="980.0">
@@ -27,7 +29,7 @@
                                        <graphic>
                                           <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../files/Icons/playButton.png" />
+                                                <Image url="@../files/Icons/playButton.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -55,7 +57,7 @@
                                        <graphic>
                                           <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../files/Icons/muteButton.png" />
+                                                <Image url="@../files/Icons/muteButton.png" />
                                              </image>
                                           </ImageView>
                                        </graphic></Button>

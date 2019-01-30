@@ -4,7 +4,7 @@ import player.Track;
 
 import java.awt.*;
 
-public class Highscore {
+public class Highscore implements Comparable<Highscore> {
     private int score;
     private String spielerName;
     private Track track;
@@ -27,5 +27,22 @@ public class Highscore {
 
     public void addScore(int score){
         this.score += score;
+    }
+
+    @Override
+    public int compareTo(Highscore o) {
+        return (this.score - o.score);
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public String getSpielerName() {
+        return spielerName;
+    }
+
+    public Track getTrack() {
+        return track;
     }
 }

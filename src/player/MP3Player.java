@@ -31,6 +31,7 @@ public class MP3Player {
     private SimpleBooleanProperty isPlayingProperty = new SimpleBooleanProperty();
 
     private boolean isPlaying = false;
+    private boolean isPaused = false;
     private Track currentTrack;
     private SimpleBooleanProperty isFinished = new SimpleBooleanProperty(false);
 
@@ -76,11 +77,18 @@ public class MP3Player {
     public void playWithBeatThread(){
         startTimer();
         isFinished.set(false);
+
         playThread = new Thread(){
             public void run(){
                 audioPlayer.play();
-                //isFinished.set(true);
                 //System.out.println("complete");
+                while (audioPlayer.isPlaying() || (!audioPlayer.isPlaying() && isPaused)){
+                    try {
+                        Thread.sleep(250);
+                    } catch (InterruptedException e) {
+                    }
+                }
+                isFinished.set(true);
             }
         };
         playThread.setDaemon(true);
@@ -148,13 +156,15 @@ public class MP3Player {
 
     //Pause/Stop:
     public void pause(){
-        isPlaying = false;
-        isPlayingProperty.set(false);
+        //isPlaying = false;
+        isPaused = true;
+        //isPlayingProperty.set(false);
         audioPlayer.pause();
     }
 
     public void resume(){
         isPlaying = true;
+        isPaused = false;
         isPlayingProperty.set(true);
         audioPlayer.play();
     }

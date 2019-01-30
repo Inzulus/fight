@@ -35,7 +35,7 @@ public class Main extends Application {
     private ArrayList<Highscore> highscoreList = new ArrayList<>();
 
     public void init() {
-        player = new MP3Player("technoBeat.mp3");
+        player = new MP3Player("boom.mp3");
 
     }
 

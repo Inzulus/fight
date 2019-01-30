@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../files/HintergrundbildMain.jpg" />
+            <Image url="@../files/HintergrundbildMain.jpg" />
          </image></ImageView>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0">
          <top>
@@ -23,7 +27,7 @@
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../files/Icons/baseline_home_black_18dp.png" />
+                        <Image url="@../files/Icons/baseline_home_black_18dp.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -43,12 +47,12 @@
                      </VBox.margin></Label>
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="500.0">
                      <children>
-                        <TextField fx:id="eingabeTetfeld" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="366.0" promptText="name" style="-fx-border-color: #353535; -fx-border-radius: 10px;" />
+                        <TextField fx:id="eingabeTextfeld" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="366.0" promptText="name" style="-fx-border-color: #353535; -fx-border-radius: 10px;" />
                         <Button fx:id="eingabeSpeichernButton" mnemonicParsing="false" onAction="#speicherEingabe" style="-fx-background-color: transparent;">
                            <graphic>
-                              <ImageView fitHeight="45.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="speicherEingabe" fitHeight="45.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../files/Icons/baseline_save_alt_black_18dp.png" />
+                                    <Image url="@../files/Icons/baseline_save_alt_black_18dp.png" />
                                  </image>
                               </ImageView>
                            </graphic></Button>
