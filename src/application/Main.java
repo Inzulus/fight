@@ -1,8 +1,10 @@
 package application;
 
 import aftergameview.AfterGameController;
+import escapeview.ESCController;
 import gameview.GameViewController;
 import gameview.Highscore;
+import highscoreview.HighscoreViewController;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 
 public class Main extends Application {
 
+    //TODO Anzeigefehler beim eneuten Spieleversuch
 
     private FXMLLoader loader;
     private MP3Player player;
@@ -29,9 +32,12 @@ public class Main extends Application {
     private GameViewController gameViewController;
     private MainViewController mainViewController;
     private AfterGameController afterGameController;
+    private ESCController escController;
+    private HighscoreViewController highscoreController;
     private Parent mainView;
     private Parent afterGameView;
-    //private Parent gameOverlay;
+    private Parent escView;
+    private Parent highscoreView;
     private ArrayList<Highscore> highscoreList = new ArrayList<>();
 
     public void init() {
@@ -51,10 +57,15 @@ public class Main extends Application {
         loader.setController(mainViewController);
         mainView = loader.load();
 
-        /*loader = new FXMLLoader(getClass().getResource("/gameview/gameOverlay.fxml"));
-        gameViewController = new GameViewController(player,this,highscoreList);
-        loader.setController(gameViewController);
-        gameOverlay = loader.load();*/
+        loader = new FXMLLoader(getClass().getResource("/escapeview/escView.fxml"));
+        escController = new ESCController(player,this);
+        loader.setController(escController);
+        escView = loader.load();
+
+        loader = new FXMLLoader(getClass().getResource("/highscoreview/highscoreView.fxml"));
+        highscoreController = new HighscoreViewController(player, this, highscoreList);
+        loader.setController(highscoreController);
+        highscoreView = loader.load();
 
         gameViewController = new GameViewController(player,this,highscoreList);
         Parent root = mainView;
@@ -76,10 +87,6 @@ public class Main extends Application {
                 break;
             case "gameView":
                 StackPane pain = new StackPane();
-                /*StackPane game = new StackPane();
-
-                game.getChildren().add(gameViewController.getGameView());
-                game.getChildren().add(gameOverlay);*/
 
                 pain.getChildren().add(mainView);
                 pain.getChildren().add(gameViewController.getGameView());
@@ -99,7 +106,47 @@ public class Main extends Application {
                 gameViewController.startGame();
                 gameViewController.getGameView().requestFocus();
                 break;
+            case "highscoreView":
+                scene.setRoot(highscoreView);
+                break;
+
+            case "ESC":
+                StackPane painESC = new StackPane();
+
+                painESC.getChildren().addAll(gameViewController.getGameView(), escView);
+                painESC.getChildren().get(1).translateYProperty().set(-1080);
+                scene.setRoot(painESC);
+
+                Timeline timelineESC = new Timeline();
+                KeyValue kvESC = new KeyValue(painESC.getChildren().get(1).translateYProperty(), 0, Interpolator.EASE_IN);
+                KeyFrame kfESC = new KeyFrame(Duration.millis(1000), kvESC);
+                timelineESC.getKeyFrames().add(kfESC);
+
+                timelineESC.play();
+                break;
+            case "ESCback":
+                StackPane painESC2 = new StackPane();
+
+                painESC2.getChildren().addAll(gameViewController.getGameView(), escView);
+                painESC2.getChildren().get(1).translateYProperty().set(0);
+                scene.setRoot(painESC2);
+
+                Timeline timelineESC2 = new Timeline();
+                KeyValue kvESC2 = new KeyValue(painESC2.getChildren().get(1).translateYProperty(), -1080, Interpolator.EASE_IN);
+                KeyFrame kfESC2 = new KeyFrame(Duration.millis(1000), kvESC2);
+                timelineESC2.getKeyFrames().add(kfESC2);
+                timelineESC2.setOnFinished(event -> {
+                    painESC2.getChildren().remove(1);
+                });
+
+                timelineESC2.play();
+
+                break;
         }
+    }
+
+    public GameViewController getGameViewController() {
+        return gameViewController;
     }
 
 

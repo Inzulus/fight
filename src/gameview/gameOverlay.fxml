@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="overlay" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gameview.GameViewController">
+<AnchorPane fx:id="gameOverlay" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="100.0" prefWidth="1920.0">
          <children>
@@ -83,7 +83,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER">
                      <children>
-                        <Label fx:id="yourScore" style="-fx-font-weight: bold; -fx-font-size: 80px;" text="XXXX" />
+                        <Label fx:id="highscoreLabel" style="-fx-font-weight: bold; -fx-font-size: 80px;" text="XXXX" />
                         <HBox alignment="CENTER">
                            <children>
                               <Label fx:id="bestScore" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" text="XXXX" textFill="#1d92f2">

@@ -38,21 +38,14 @@ public class MP3Player {
 
     //Konstruktor:
     public MP3Player(String filename){
-        loadTrack(filename);
 
         MinimHelper minimHelper = new MinimHelper();
         minim = new Minim(minimHelper);
-        audioPlayer = minim.loadFile(filename,1024);
+        //audioPlayer = minim.loadFile(filename,1024);
+        loadTrack(filename);
 
-        beatDetect = new BeatDetect(audioPlayer.bufferSize(), audioPlayer.sampleRate());
-        beatDetect.setSensitivity(300);
-        kickSize = snareSize = hatSize = 16;
-        bl = new BeatListener(beatDetect, audioPlayer);
     }
 
-
-    public MP3Player(){
-    }
 
     //Erzeugen von Tracks:
     public void loadTrack(String filename) {
@@ -61,7 +54,16 @@ public class MP3Player {
             Mp3File mp3file = new Mp3File(filename);
             ID3v1 id3v1Tag = mp3file.getId3v1Tag();
 
+
             currentTrack = new Track(id3v1Tag.getTitle(), id3v1Tag.getArtist(), filename, mp3file.getLengthInSeconds());
+            audioPlayer = minim.loadFile(currentTrack.getPath(),1024);
+
+
+            beatDetect = new BeatDetect(audioPlayer.bufferSize(), audioPlayer.sampleRate());
+            beatDetect.setSensitivity(300);
+            kickSize = snareSize = hatSize = 16;
+            bl = new BeatListener(beatDetect, audioPlayer);
+
 
         } catch (InvalidDataException e) {
             System.out.println("Invalid Mp3File");
@@ -172,7 +174,7 @@ public class MP3Player {
 
     public void stop(){
         isPlayingProperty.set(false);
-        timeThread.interrupt();
+        isPlaying = false;
         minim.stop();
     }
 

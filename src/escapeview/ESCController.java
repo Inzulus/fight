@@ -1,10 +1,22 @@
 package escapeview;
 
+import application.Main;
+import gameview.GameViewController;
+import gameview.Highscore;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import player.MP3Player;
+
+import java.util.ArrayList;
 
 public class ESCController {
+
+    private MP3Player player;
+    private Main application;
+    private FileChooser fileChooser = new FileChooser();
 
     //FXML Resourcen
 
@@ -27,25 +39,28 @@ public class ESCController {
 
 
     //Kontruktor:
-    public ESCController () {
-        //TODO all this shit
+    public ESCController (MP3Player player, Main application) {
+        this.player = player;
+        this.application = application;
     }
+
+    //TODO Labelinformationen aus dem GameViewController rausholen zu jedem Zeitpunkt
 
 
     //FXML Methoden
 
     @FXML
     private void continueGame () {
-        //TODO Spiel soll an angehaltener Stelle weiterlaufen
+        //TODO Spiel fortsetzen, ohne das es Freezt
     }
 
     @FXML
     private void restartSong () {
-        //TODO startet das Spiel mit dem selben Song neu
+        //TODO richtige Schwierigkeiten die Methoden des GameViewControllers aufzurufen
     }
 
     @FXML
     private void returnHome () {
-        //TODO Zurück zum Hauptmenü, aber den Song behalten
+        application.switchView("mainView");
     }
 }

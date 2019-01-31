@@ -4,7 +4,7 @@ import player.Track;
 
 import java.awt.*;
 
-public class Highscore implements Comparable<Highscore> {
+public class Highscore implements Comparable<Highscore>{
     private int score;
     private String spielerName;
     private Track track;

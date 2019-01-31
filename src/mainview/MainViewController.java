@@ -112,7 +112,7 @@ public class MainViewController {
         this.player = player;
         this.application = application;
         this.primaryStage = primaryStage;
-    }
+         }
 
     public void initialize() {
         info();
@@ -129,9 +129,11 @@ public class MainViewController {
         //Button Methoden:
     @FXML
     private void playMusic() {
+        //System.out.println(player.isPlaying());
         if (player.isPlaying()) {
             player.pause();
         } else { player.playWithBeatThread();}
+        //System.out.println(player.isPlaying());
     }
 
     @FXML
@@ -157,8 +159,10 @@ public class MainViewController {
     @FXML
     private void changeSong() {
         File file = fileChooser.showOpenDialog(primaryStage);
+        player.stop();
         player.loadTrack(file.getPath());
         info();
+        System.out.println(player.isPlaying());
     }
 
     @FXML

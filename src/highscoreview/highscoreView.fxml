@@ -1,9 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="highscoreview.HighscoreView" />
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="-4.0" layoutY="394.0">
+         <children>
+            <HBox alignment="CENTER" layoutX="-4.0" layoutY="394.0" prefHeight="100.0" prefWidth="1920.0">
+               <children>
+                  <Label fx:id="songtitel" style="-fx-font-weight: bold; -fx-font-size: 50px;" text="Songtitel">
+                     <HBox.margin>
+                        <Insets right="25.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button fx:id="playButton" mnemonicParsing="false" onAction="#playSong" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../files/Icons/playButton.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <Label alignment="CENTER" prefWidth="1920.0" text="-------------------------------------------------------------" textAlignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <ListView fx:id="listview" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <Button fx:id="homeButton" mnemonicParsing="false" onAction="#menue" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../files/Icons/baseline_home_black_18dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <padding>
+            <Insets left="80.0" top="25.0" />
+         </padding>
+      </Button>
+   </children>
+</AnchorPane>

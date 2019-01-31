@@ -58,7 +58,7 @@ public class AfterGameController {
             System.out.println(hs.getScore());
             System.out.println(hs.getTrack());
         }
-        application.switchView("mainView");
+        application.switchView("highscoreView");
     }
 
     @FXML
