@@ -106,19 +106,19 @@ public class Main extends Application {
             properties.setProperty("currentTrack", player.getCurrentTrack().getPath());
             properties.setProperty("hs1Track",highscoreList.get(0).getTrack().getPath());
             properties.setProperty("hs1Name",highscoreList.get(0).getSpielerName());
-            properties.setProperty("hs1Score", String.valueOf(highscoreList.remove(0).getScore()));
+            properties.setProperty("hs1Score", Integer.toString(highscoreList.remove(0).getScore()));
             properties.setProperty("hs2Track",highscoreList.get(0).getTrack().getPath());
             properties.setProperty("hs2Name",highscoreList.get(0).getSpielerName());
-            properties.setProperty("hs2core", String.valueOf(highscoreList.remove(0).getScore()));
+            properties.setProperty("hs2Score", Integer.toString(highscoreList.remove(0).getScore()));
             properties.setProperty("hs3Track",highscoreList.get(0).getTrack().getPath());
             properties.setProperty("hs3Name",highscoreList.get(0).getSpielerName());
-            properties.setProperty("hs3Score", String.valueOf(highscoreList.remove(0).getScore()));
+            properties.setProperty("hs3Score", Integer.toString(highscoreList.remove(0).getScore()));
             properties.setProperty("hs4Track",highscoreList.get(0).getTrack().getPath());
             properties.setProperty("hs4Name",highscoreList.get(0).getSpielerName());
-            properties.setProperty("hs4Score", String.valueOf(highscoreList.remove(0).getScore()));
+            properties.setProperty("hs4Score", Integer.toString(highscoreList.remove(0).getScore()));
             properties.setProperty("hs5Track",highscoreList.get(0).getTrack().getPath());
             properties.setProperty("hs5Name",highscoreList.get(0).getSpielerName());
-            properties.setProperty("hs5Score", String.valueOf(highscoreList.remove(0).getScore()));
+            properties.setProperty("hs5Score", Integer.toString(highscoreList.remove(0).getScore()));
 
             properties.storeToXML(out,"Settings XML File for FightGame");
         } catch (IOException e) {
