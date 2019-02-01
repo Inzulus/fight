@@ -1,5 +1,12 @@
 package player;
 
+import com.mpatric.mp3agic.ID3v1;
+import com.mpatric.mp3agic.InvalidDataException;
+import com.mpatric.mp3agic.Mp3File;
+import com.mpatric.mp3agic.UnsupportedTagException;
+
+import java.io.IOException;
+
 public class Track {
 
     private String name;
@@ -16,7 +23,24 @@ public class Track {
         this.path = path;
     }
 
-    public Track() {
+    public Track(String filename) {
+        try {
+            Mp3File mp3file = new Mp3File(filename);
+            ID3v1 id3v1Tag = mp3file.getId3v1Tag();
+            name = id3v1Tag.getTitle();
+            artist = id3v1Tag.getArtist();
+            path = filename;
+            length = mp3file.getLengthInSeconds();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (UnsupportedTagException e) {
+            e.printStackTrace();
+        } catch (InvalidDataException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 

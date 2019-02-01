@@ -29,9 +29,6 @@ public class GameView extends BorderPane {
     public GameView(){
 
         //TODO StackPane mit gameOverlay!!
-
-        spieler = new GameEntity(1920/2,900,30,30,0,0,Color.PINK);
-        allEntities.add(spieler);
         wrapPane = new Pane();
         highscoreLabel = new Label("XXXXXXXX");
         canvas = new Canvas(1920,1000);
@@ -45,7 +42,6 @@ public class GameView extends BorderPane {
 
 
         lastSystemTime = System.nanoTime();
-
         animationTimer = new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 double elapsedTime = (currentNanoTime - lastSystemTime) / 1000000000.0;
@@ -79,6 +75,8 @@ public class GameView extends BorderPane {
         };
     }
     public void startGame(){
+        spieler = new GameEntity(1920/2,900,30,30,0,0,Color.PINK);
+        allEntities.add(spieler);
         isRunning = true;
         animationTimer.start();
         currentHighscore = 0;

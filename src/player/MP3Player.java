@@ -49,13 +49,7 @@ public class MP3Player {
 
     //Erzeugen von Tracks:
     public void loadTrack(String filename) {
-
-        try{
-            Mp3File mp3file = new Mp3File(filename);
-            ID3v1 id3v1Tag = mp3file.getId3v1Tag();
-
-
-            currentTrack = new Track(id3v1Tag.getTitle(), id3v1Tag.getArtist(), filename, mp3file.getLengthInSeconds());
+             currentTrack = new Track(filename);
             audioPlayer = minim.loadFile(currentTrack.getPath(),1024);
 
 
@@ -64,14 +58,6 @@ public class MP3Player {
             kickSize = snareSize = hatSize = 16;
             bl = new BeatListener(beatDetect, audioPlayer);
 
-
-        } catch (InvalidDataException e) {
-            System.out.println("Invalid Mp3File");
-        } catch (UnsupportedTagException e) {
-            System.out.println("Unsupported Tags");
-        } catch (IOException x) {
-            System.err.format("IOException: %s%n", x);
-        }
     }
 
 
@@ -91,6 +77,7 @@ public class MP3Player {
                     }
                 }
                 isFinished.set(true);
+                isPlaying = false;
             }
         };
         playThread.setDaemon(true);

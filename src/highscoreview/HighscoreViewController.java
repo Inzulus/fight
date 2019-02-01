@@ -40,7 +40,8 @@ public class HighscoreViewController {
         this.player = player;
         this.application = application;
         this.highscoreList = highscoreList;
-        loadPlaylist(highscoreList);
+        //loadPlaylist(highscoreList);
+
     }
 
     //TODO label müssen Infomationen aus dem HighscoreObjekt holen
@@ -58,6 +59,7 @@ public class HighscoreViewController {
     }
 
     public void loadPlaylist(ArrayList<Highscore> highscoreList){
+        songtitel.setText(player.getCurrentTrack().getName());
         ObservableList<Highscore> observableList = FXCollections.observableArrayList();
 
         for(int i = 0;i<highscoreList.size();i++){

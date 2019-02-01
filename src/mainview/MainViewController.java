@@ -167,8 +167,8 @@ public class MainViewController {
 
     @FXML
     private void showHighscore() {
-        /*TODO Die Highscores zum ausgewählten Song zeigen
-        * View Change*/
+        //TODO Die Highscores zum ausgewählten Song zeigen
+       application.switchView("highscoreView");
     }
 
     @FXML

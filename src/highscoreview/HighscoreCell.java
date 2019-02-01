@@ -1,6 +1,7 @@
 package highscoreview;
 
 import gameview.Highscore;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
@@ -15,6 +16,7 @@ public class HighscoreCell extends ListCell<Highscore> {
     private Label platzierung;
     private Label score;
     private Label name;
+    private static int highscoreCount = 0;
 
     public HighscoreCell () {
         HBox cellKasten = new HBox();
@@ -23,9 +25,12 @@ public class HighscoreCell extends ListCell<Highscore> {
         platzierung = new Label();
         score = new Label();
         name = new Label();
+        view = new Pane();
 
-        tabelle.getChildren().addAll(score, name);
-        cellKasten.getChildren().addAll(platzierung, tabelle);
+        //tabelle.getChildren().addAll(score, name);
+        cellKasten.setAlignment(Pos.CENTER);
+        cellKasten.setSpacing(20);
+        cellKasten.getChildren().addAll(platzierung, score,name);
 
         view.getChildren().add(cellKasten);
         this.setGraphic(view);
@@ -41,7 +46,7 @@ public class HighscoreCell extends ListCell<Highscore> {
             name.setText(highscore.getSpielerName());
 
             //TODO sortierte Liste mit, um Platzierungen festzusetzen
-            //platzierung.setText();
+            platzierung.setText(String.valueOf(highscoreCount++));
             setGraphic(view);
         } else {
             setGraphic(null);

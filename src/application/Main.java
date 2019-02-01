@@ -18,9 +18,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import mainview.MainViewController;
 import player.MP3Player;
+import player.Track;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class Main extends Application {
 
@@ -47,6 +49,25 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        try {
+            InputStream inputStream = new FileInputStream("settings.xml");
+
+            Properties prop = new Properties();
+            prop.loadFromXML(inputStream);
+
+            player.loadTrack(prop.getProperty("currentTrack"));
+            highscoreList.add(new Highscore(new Track(prop.getProperty("hs1Track")), prop.getProperty("hs1Name"), Integer.parseInt(prop.getProperty("hs1Score"))));
+            highscoreList.add(new Highscore(new Track(prop.getProperty("hs2Track")), prop.getProperty("hs2Name"), Integer.parseInt(prop.getProperty("hs2Score"))));
+            highscoreList.add(new Highscore(new Track(prop.getProperty("hs3Track")), prop.getProperty("hs3Name"), Integer.parseInt(prop.getProperty("hs3Score"))));
+            highscoreList.add(new Highscore(new Track(prop.getProperty("hs4Track")), prop.getProperty("hs4Name"), Integer.parseInt(prop.getProperty("hs4Score"))));
+            highscoreList.add(new Highscore(new Track(prop.getProperty("hs5Track")), prop.getProperty("hs5Name"), Integer.parseInt(prop.getProperty("hs5Score"))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+
         loader = new FXMLLoader(getClass().getResource("/aftergameview/afterGameView.fxml"));
         afterGameController = new AfterGameController(this,highscoreList);
         loader.setController(afterGameController);
@@ -75,6 +96,38 @@ public class Main extends Application {
         primaryStage.setMaximized(true);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    @Override
+    public void stop()throws Exception{
+
+        try (OutputStream out = new FileOutputStream("settings.xml")) {
+            Properties properties = new Properties();
+            properties.setProperty("currentTrack", player.getCurrentTrack().getPath());
+            properties.setProperty("hs1Track",highscoreList.get(0).getTrack().getPath());
+            properties.setProperty("hs1Name",highscoreList.get(0).getSpielerName());
+            properties.setProperty("hs1Score", String.valueOf(highscoreList.remove(0).getScore()));
+            properties.setProperty("hs2Track",highscoreList.get(0).getTrack().getPath());
+            properties.setProperty("hs2Name",highscoreList.get(0).getSpielerName());
+            properties.setProperty("hs2core", String.valueOf(highscoreList.remove(0).getScore()));
+            properties.setProperty("hs3Track",highscoreList.get(0).getTrack().getPath());
+            properties.setProperty("hs3Name",highscoreList.get(0).getSpielerName());
+            properties.setProperty("hs3Score", String.valueOf(highscoreList.remove(0).getScore()));
+            properties.setProperty("hs4Track",highscoreList.get(0).getTrack().getPath());
+            properties.setProperty("hs4Name",highscoreList.get(0).getSpielerName());
+            properties.setProperty("hs4Score", String.valueOf(highscoreList.remove(0).getScore()));
+            properties.setProperty("hs5Track",highscoreList.get(0).getTrack().getPath());
+            properties.setProperty("hs5Name",highscoreList.get(0).getSpielerName());
+            properties.setProperty("hs5Score", String.valueOf(highscoreList.remove(0).getScore()));
+
+            properties.storeToXML(out,"Settings XML File for FightGame");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        super.stop();
+        player.stop();
+
     }
 
     public void switchView(String viewName){
@@ -108,6 +161,7 @@ public class Main extends Application {
                 break;
             case "highscoreView":
                 scene.setRoot(highscoreView);
+                highscoreController.loadPlaylist(highscoreList);
                 break;
 
             case "ESC":
