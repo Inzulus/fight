@@ -12,6 +12,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -57,6 +58,7 @@ public class MP3Player {
             beatDetect.setSensitivity(300);
             kickSize = snareSize = hatSize = 16;
             bl = new BeatListener(beatDetect, audioPlayer);
+            fireInfoEvent();
 
     }
 
@@ -88,7 +90,7 @@ public class MP3Player {
 
 
     //feuert das Infoevent um das Interface vom Songwechsel zu informieren:
-    /*private synchronized void fireInfoEvent(){
+    private synchronized void fireInfoEvent(){
         InfoEvent ie = new InfoEvent(this,getCurrentTrack());
         Iterator listener = this.listener.iterator();
         while(listener.hasNext()){
@@ -96,7 +98,7 @@ public class MP3Player {
         }
     }
     public synchronized void addInfoListener(InfoListener il){ listener.add(il); }
-    public synchronized void removeInfoListener(InfoListener il){ listener.remove(il); }*/
+    public synchronized void removeInfoListener(InfoListener il){ listener.remove(il); }
 
 
     //Start_Methoden zum abspielen eines Songs:

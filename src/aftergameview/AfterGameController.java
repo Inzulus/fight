@@ -3,10 +3,14 @@ package aftergameview;
 import application.Main;
 import gameview.Highscore;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import player.InfoEvent;
+import player.InfoListener;
+import player.MP3Player;
 
 import java.util.ArrayList;
 
@@ -37,10 +41,26 @@ public class AfterGameController {
     @FXML
     private Label scoreFeld = new Label();
 
+    private InfoListener il = new InfoListener() {
+
+        @Override
+        public void infoReceived(InfoEvent event) {
+            Platform.runLater(new Runnable(){
+                @Override
+                public void run() {
+                    songtitelFeld.setText(event.getTrack().getName());
+                }
+            });
+        }
+    };
+    MP3Player player;
+
     //Kontruktor
-    public AfterGameController (Main application, ArrayList<Highscore> highscoreList) {
+    public AfterGameController (Main application, MP3Player player, ArrayList<Highscore> highscoreList) {
         this.application = application;
         this.highscoreList = highscoreList;
+        player.addInfoListener(il);
+        this.player = player;
     }
 
 
@@ -66,6 +86,11 @@ public class AfterGameController {
         //TODO zum Hauptmenü zurückkehren
         System.out.println("returnHome");
         application.switchView("mainView");
+    }
+
+    public void updateScore(){
+        scoreFeld.setText(Integer.toString(highscoreList.get(highscoreList.size()-1).getScore()));
+        songtitelFeld.setText(player.getCurrentTrack().getName());
     }
 
 

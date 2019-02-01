@@ -112,7 +112,7 @@ public class MainViewController {
         this.player = player;
         this.application = application;
         this.primaryStage = primaryStage;
-         }
+    }
 
     public void initialize() {
         info();

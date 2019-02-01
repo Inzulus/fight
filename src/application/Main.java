@@ -65,11 +65,8 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-
-
-
         loader = new FXMLLoader(getClass().getResource("/aftergameview/afterGameView.fxml"));
-        afterGameController = new AfterGameController(this,highscoreList);
+        afterGameController = new AfterGameController(this,player,highscoreList);
         loader.setController(afterGameController);
         afterGameView = loader.load();
 
@@ -134,6 +131,7 @@ public class Main extends Application {
         switch (viewName){
             case "afterGameView":
                 scene.setRoot(afterGameView);
+                afterGameController.updateScore();
                 break;
             case "mainView":
                 scene.setRoot(mainView);
