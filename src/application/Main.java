@@ -192,6 +192,7 @@ public class Main extends Application {
                 });
 
                 timelineESC2.play();
+                getGameViewController().getGameView().requestFocus();
 
                 break;
         }

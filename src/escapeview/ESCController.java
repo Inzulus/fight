@@ -52,15 +52,21 @@ public class ESCController {
     @FXML
     private void continueGame () {
         //TODO Spiel fortsetzen, ohne das es Freezt
+        application.getGameViewController().pauseOrContinueGame();
+
     }
 
     @FXML
     private void restartSong () {
         //TODO richtige Schwierigkeiten die Methoden des GameViewControllers aufzurufen
+        application.getGameViewController().getGameView().stopGame();
+        application.switchView("ESCback");
+        application.getGameViewController().startGame();
     }
 
     @FXML
     private void returnHome () {
+        application.getGameViewController().getGameView().stopGame();
         application.switchView("mainView");
     }
 }
