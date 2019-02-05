@@ -1,20 +1,25 @@
 package mainview;
 
 import application.Main;
+import gameview.Highscore;
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import player.MP3Player;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class MainViewController {
 
@@ -22,6 +27,7 @@ public class MainViewController {
     private Main application;
     private FileChooser fileChooser = new FileChooser();
     private Stage primaryStage;
+    private ArrayList<Highscore> highscoreList;
 
     //FXML Ressourcen aus dem Scene-Builder:
 
@@ -108,10 +114,11 @@ public class MainViewController {
     //CONTROLLER:
 
         //Kontruktor:
-    public MainViewController(MP3Player player, Main application, Stage primaryStage) {
+    public MainViewController(MP3Player player, Main application, Stage primaryStage, ArrayList<Highscore> highscoreList) {
         this.player = player;
         this.application = application;
         this.primaryStage = primaryStage;
+        this.highscoreList = highscoreList;
     }
 
     public void initialize() {
@@ -121,6 +128,27 @@ public class MainViewController {
         sliderAudio.valueProperty().addListener((observable,oldValue,newValues)->{
             player.volume(newValues.floatValue());
         });
+        player.getCurrentTimeProperty().timeProperty().addListener((observable,oldValue,newValues)->{
+            sliderSong.setValue(newValues.doubleValue());
+        });
+        /*player.getIsPlayingProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(newValue) {
+                    System.out.println("playing");
+                    VBox vBox = (VBox) anchor.getChildren().get(1);
+                    BorderPane borderPane = (BorderPane) vBox.getChildren().get(0);
+                    VBox vBox1 = (VBox) borderPane.getLeft();
+                    HBox hBox = (HBox) vBox1.getChildren().get(1);
+                    hBox.getChildren().remove(0);
+                }
+            }
+        });*/
+
+        platz1.setText(highscoreList.get(0).toString());
+        platz2.setText(highscoreList.get(1).toString());
+        platz3.setText(highscoreList.get(2).toString());
+
     }
 
 
@@ -129,11 +157,13 @@ public class MainViewController {
         //Button Methoden:
     @FXML
     private void playMusic() {
-        //System.out.println(player.isPlaying());
         if (player.isPlaying()) {
             player.pause();
-        } else { player.playWithBeatThread();}
-        //System.out.println(player.isPlaying());
+        }
+        else{
+            player.playWithBeatThread();
+            }
+
     }
 
     @FXML
@@ -163,6 +193,7 @@ public class MainViewController {
         player.loadTrack(file.getPath());
         info();
         System.out.println(player.isPlaying());
+        sliderStandart();
     }
 
     @FXML
@@ -193,7 +224,9 @@ public class MainViewController {
     private void sliderStandart() {
         sliderAudio.setMin(0);
         sliderAudio.setMax(2);
-        sliderAudio.adjustValue(1);
+        sliderAudio.setValue(1);
+        sliderSong.setMin(0);
+        sliderSong.setMax(player.getCurrentTrack().getLength());
     }
 
 

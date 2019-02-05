@@ -147,9 +147,9 @@ public class MP3Player {
 
     //Pause/Stop:
     public void pause(){
-        //isPlaying = false;
+        isPlaying = false;
         isPaused = true;
-        //isPlayingProperty.set(false);
+        isPlayingProperty.set(false);
         audioPlayer.pause();
     }
 

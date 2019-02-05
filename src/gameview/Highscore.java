@@ -45,4 +45,8 @@ public class Highscore implements Comparable<Highscore>{
     public Track getTrack() {
         return track;
     }
+
+    public String toString(){
+        return score+" "+spielerName+" "+track.getName();
+    }
 }

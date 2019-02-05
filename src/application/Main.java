@@ -71,7 +71,7 @@ public class Main extends Application {
         afterGameView = loader.load();
 
         loader = new FXMLLoader(getClass().getResource("/mainview/mainView.fxml"));
-        mainViewController = new MainViewController(player,this, primaryStage);
+        mainViewController = new MainViewController(player,this, primaryStage,highscoreList);
         loader.setController(mainViewController);
         mainView = loader.load();
 

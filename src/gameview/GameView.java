@@ -12,31 +12,33 @@ import java.util.ArrayList;
 
 
 public class GameView extends BorderPane {
-    private Canvas canvas;
-    Pane wrapPane;
+
     private ArrayList<GameEntity> allEntities = new ArrayList<>();
-    GameEntity spieler;
     private ArrayList<EnemyEntity> enemyEntities = new ArrayList<>();
     private ArrayList<GameEntity> projectileEntities = new ArrayList<>();
+    GameEntity spieler;
+
+    private Canvas canvas;
+    GraphicsContext graphicsContext;
+    Pane wrapPane;
+    Label highscoreLabel;
+
     AnimationTimer animationTimer;
     private Long lastSystemTime;
-    Label highscoreLabel;
     int currentHighscore;
-    GraphicsContext graphicsContext;
     boolean isRunning;
 
 
     public GameView(){
-
-        //TODO StackPane mit gameOverlay!!
         wrapPane = new Pane();
         highscoreLabel = new Label("XXXXXXXX");
+        highscoreLabel.setStyle("-fx-font-size: 30pt");
+        highscoreLabel.setLayoutX(1850);
         canvas = new Canvas(1920,1000);
         wrapPane.setStyle("-fx-background-color: black");
 
         this.setCenter(wrapPane);
-        this.setTop(highscoreLabel);
-        wrapPane.getChildren().addAll(canvas);
+        wrapPane.getChildren().addAll(canvas,highscoreLabel);
 
         graphicsContext = canvas.getGraphicsContext2D();
 
@@ -92,7 +94,6 @@ public class GameView extends BorderPane {
 
     public void addGameEntity(GameEntity entity){
         allEntities.add(entity);
-
     }
 
     public void addEnemyEntity(EnemyEntity entity){
