@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>Settings XML File for FightGame</comment>
-<entry key="currentTrack">C:\Users\Julius\fight\brain.mp3</entry>
+<entry key="currentTrack">brain.mp3</entry>
 <entry key="hs3Track">boom.mp3</entry>
 <entry key="hs3Score">0</entry>
 <entry key="hs5Name">wer3</entry>
