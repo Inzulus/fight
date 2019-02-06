@@ -36,7 +36,7 @@ public class Main extends Application {
     private AfterGameController afterGameController;
     private ESCController escController;
     private HighscoreViewController highscoreController;
-    private Parent mainView;
+    private StackPane mainView;
     private Parent afterGameView;
     private Parent escView;
     private Parent highscoreView;

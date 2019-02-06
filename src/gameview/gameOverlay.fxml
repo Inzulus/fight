@@ -39,14 +39,6 @@
                         <Insets top="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="  |">
-                     <font>
-                        <Font size="50.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="18.0" />
-                     </HBox.margin>
-                  </Label>
                </children>
                <HBox.margin>
                   <Insets left="120.0" />
@@ -57,50 +49,16 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="1120.0">
                <children>
-                  <VBox alignment="TOP_CENTER">
-                     <children>
-                        <Label style="-fx-font-weight: bold; -fx-font-size: 50px;" text="SCORE">
-                           <HBox.margin>
-                              <Insets right="15.0" />
-                           </HBox.margin>
-                        </Label>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <Label text="HIGHSCORE" textFill="#1d92f2">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                        </HBox>
-                     </children>
+                  <Label style="-fx-font-weight: bold; -fx-font-size: 50px;" text="SCORE">
                      <HBox.margin>
-                        <Insets right="50.0" top="25.0" />
+                        <Insets right="20.0" />
                      </HBox.margin>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER">
-                     <children>
-                        <Label fx:id="highscoreLabel" style="-fx-font-weight: bold; -fx-font-size: 80px;" text="XXXX" />
-                        <HBox alignment="CENTER">
-                           <children>
-                              <Label fx:id="bestScore" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" text="XXXX" textFill="#1d92f2">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets top="-25.0" />
-                           </padding>
-                        </HBox>
-                     </children>
-                  </VBox>
+                  </Label>
+                  <Label fx:id="highscoreLabel" style="-fx-font-weight: bold; -fx-font-size: 80px;" text="XXXX">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
                <HBox.margin>
                   <Insets right="120.0" />

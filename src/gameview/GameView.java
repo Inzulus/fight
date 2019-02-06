@@ -27,6 +27,8 @@ public class GameView extends BorderPane {
     private Long lastSystemTime;
     int currentHighscore;
     boolean isRunning;
+    /*Image image;
+    ImageView iv;*/
 
 
     public GameView(){
@@ -36,6 +38,10 @@ public class GameView extends BorderPane {
         highscoreLabel.setLayoutX(1850);
         canvas = new Canvas(1920,1000);
         wrapPane.setStyle("-fx-background-color: black");
+
+        /*File file = new File("files/Gameviewimage.png");
+        image = new Image(file.toURI().toString());
+        iv = new ImageView(image);*/
 
         this.setCenter(wrapPane);
         wrapPane.getChildren().addAll(canvas,highscoreLabel);

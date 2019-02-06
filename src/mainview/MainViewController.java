@@ -3,8 +3,6 @@ package mainview;
 import application.Main;
 import gameview.Highscore;
 import javafx.animation.TranslateTransition;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -89,6 +87,9 @@ public class MainViewController {
     private Button highscoreButton = new Button();
     @FXML
     private Button exitButton = new Button();
+
+    //@FXML
+    //private ToggleButton muteButton = new ToggleButton();
 
         //Slider:
     @FXML
