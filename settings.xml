@@ -2,20 +2,20 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>Settings XML File for FightGame</comment>
-<entry key="currentTrack">brain.mp3</entry>
-<entry key="hs3Track">boom.mp3</entry>
-<entry key="hs3Score">0</entry>
-<entry key="hs5Name">wer3</entry>
-<entry key="hs4Track">boom.mp3</entry>
-<entry key="hs4Score">0</entry>
-<entry key="hs4Name">324f</entry>
-<entry key="hs1Track">boom.mp3</entry>
-<entry key="hs3Name">sdfg</entry>
-<entry key="hs1Score">0</entry>
-<entry key="hs2Name">1234</entry>
+<entry key="currentTrack">C:\Users\Asus UX3410U\IdeaProjects\fight\02_LoveWillBeWithYou.mp3</entry>
+<entry key="hs3Track">C:\Users\Asus UX3410U\IdeaProjects\fight\02_LoveWillBeWithYou.mp3</entry>
+<entry key="hs3Score">260</entry>
+<entry key="hs5Name">asdf</entry>
+<entry key="hs4Track">C:\Users\Asus UX3410U\IdeaProjects\fight\02_LoveWillBeWithYou.mp3</entry>
+<entry key="hs4Score">210</entry>
+<entry key="hs4Name">Julius</entry>
+<entry key="hs1Track">C:\Users\Asus UX3410U\IdeaProjects\fight\02_LoveWillBeWithYou.mp3</entry>
+<entry key="hs3Name">Julius</entry>
+<entry key="hs1Score">340</entry>
+<entry key="hs2Name">Jörn</entry>
 <entry key="hs5Track">boom.mp3</entry>
-<entry key="hs1Name">asdf</entry>
+<entry key="hs1Name">Julius</entry>
 <entry key="hs5Score">0</entry>
-<entry key="hs2Track">boom.mp3</entry>
-<entry key="hs2Score">0</entry>
+<entry key="hs2Track">C:\Users\Asus UX3410U\IdeaProjects\fight\02_LoveWillBeWithYou.mp3</entry>
+<entry key="hs2Score">270</entry>
 </properties>

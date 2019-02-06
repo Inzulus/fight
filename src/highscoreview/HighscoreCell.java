@@ -7,6 +7,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 import java.util.logging.LoggingMXBean;
 
@@ -16,7 +17,7 @@ public class HighscoreCell extends ListCell<Highscore> {
     private Label platzierung;
     private Label score;
     private Label name;
-    private static int highscoreCount = 0;
+    //private static int highscoreCount = 0;
 
     public HighscoreCell () {
         HBox cellKasten = new HBox();
@@ -46,7 +47,7 @@ public class HighscoreCell extends ListCell<Highscore> {
             name.setText(highscore.getSpielerName());
 
             //TODO sortierte Liste mit, um Platzierungen festzusetzen
-            platzierung.setText(String.valueOf(highscoreCount++));
+            //platzierung.setText(String.valueOf(highscoreCount++));
             setGraphic(view);
         } else {
             setGraphic(null);

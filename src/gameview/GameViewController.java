@@ -34,10 +34,10 @@ public class GameViewController {
             @Override
             public void handle(KeyEvent event) {
                 if(event.getCode()== KeyCode.LEFT){
-                    gameView.spieler.speedX=-200;
+                    gameView.spieler.speedX=-400;
                 }
                 if(event.getCode()== KeyCode.RIGHT){
-                    gameView.spieler.speedX=200;
+                    gameView.spieler.speedX=400;
                 }
 
                 if (event.getCode()==KeyCode.ESCAPE){

@@ -66,7 +66,7 @@
                               </Label>
                               <HBox alignment="CENTER_RIGHT" prefHeight="67.0" prefWidth="362.0">
                                  <children>
-                                    <Button fx:id="muteButton" mnemonicParsing="false" onAction="#muteMusic" style="-fx-background-color: transparent;">
+                                    <ToggleButton fx:id="muteButton" mnemonicParsing="false" onAction="#muteMusic" style="-: ;" stylesheets="@SliderStyle.css">
                                        <graphic>
                                           <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -74,7 +74,7 @@
                                              </image>
                                           </ImageView>
                                        </graphic>
-                                    </Button>
+                                    </ToggleButton>
                                     <Slider fx:id="sliderAudio" prefHeight="73.0" prefWidth="270.0" stylesheets="@SliderStyle.css" />
                                  </children>
                               </HBox>
@@ -124,67 +124,6 @@
                            </padding>
                         </VBox>
                      </center>
-                     <left>
-                        <VBox alignment="BOTTOM_LEFT" prefHeight="148.0" prefWidth="484.0">
-                           <children>
-                              <Label fx:id="ueberschriftSongs" text="SONGS">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font>
-                              </Label>
-                              <Button fx:id="songButton1" mnemonicParsing="false" onAction="#playSong1" style="-fx-background-color: transparent;" text="LastSong">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="songButton2" mnemonicParsing="false" onAction="#playSong2" style="-fx-background-color: transparent;" text="LastLastSong">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="songButton3" mnemonicParsing="false" onAction="#playSong3" style="-fx-background-color: transparent;" text="LastLastLastSong">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                           <padding>
-                              <Insets bottom="80.0" left="80.0" top="180.0" />
-                           </padding>
-                        </VBox>
-                     </left>
-                     <right>
-                        <VBox alignment="BOTTOM_RIGHT" prefHeight="148.0" prefWidth="484.0" spacing="10.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <Label fx:id="ueberschriftTop" text="TOP">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="platz1" text="First   ">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="platz2" text="Second   ">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="platz3" text="Third   ">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets bottom="80.0" right="80.0" />
-                           </padding>
-                        </VBox>
-                     </right>
                   </BorderPane>
                </children>
             </VBox>

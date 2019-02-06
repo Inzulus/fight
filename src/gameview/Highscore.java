@@ -31,7 +31,7 @@ public class Highscore implements Comparable<Highscore>{
 
     @Override
     public int compareTo(Highscore o) {
-        return (this.score - o.score);
+        return (o.score - this.score);
     }
 
     public int getScore() {

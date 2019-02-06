@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
@@ -69,9 +70,6 @@ public class MainViewController {
     private Button fightButton = new Button();
 
     @FXML
-    private Button muteButton = new Button();
-
-    @FXML
     private Button songButton1 = new Button();
 
     @FXML
@@ -88,8 +86,8 @@ public class MainViewController {
     @FXML
     private Button exitButton = new Button();
 
-    //@FXML
-    //private ToggleButton muteButton = new ToggleButton();
+    @FXML
+    private ToggleButton muteButton = new ToggleButton();
 
         //Slider:
     @FXML

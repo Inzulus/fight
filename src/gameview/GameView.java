@@ -37,7 +37,7 @@ public class GameView extends BorderPane {
         highscoreLabel.setStyle("-fx-font-size: 30pt");
         highscoreLabel.setLayoutX(1850);
         canvas = new Canvas(1920,1000);
-        wrapPane.setStyle("-fx-background-color: black");
+        //wrapPane.setStyle("-fx-background-color: black");
 
         /*File file = new File("files/Gameviewimage.png");
         image = new Image(file.toURI().toString());
@@ -47,6 +47,7 @@ public class GameView extends BorderPane {
         wrapPane.getChildren().addAll(canvas,highscoreLabel);
 
         graphicsContext = canvas.getGraphicsContext2D();
+        wrapPane.setStyle("-fx-background-image: url(\"files/Gameviewimage.png\");");
 
 
         lastSystemTime = System.nanoTime();
