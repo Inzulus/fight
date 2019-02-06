@@ -130,19 +130,6 @@ public class MainViewController {
         player.getCurrentTimeProperty().timeProperty().addListener((observable,oldValue,newValues)->{
             sliderSong.setValue(newValues.doubleValue());
         });
-        /*player.getIsPlayingProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(newValue) {
-                    System.out.println("playing");
-                    VBox vBox = (VBox) anchor.getChildren().get(1);
-                    BorderPane borderPane = (BorderPane) vBox.getChildren().get(0);
-                    VBox vBox1 = (VBox) borderPane.getLeft();
-                    HBox hBox = (HBox) vBox1.getChildren().get(1);
-                    hBox.getChildren().remove(0);
-                }
-            }
-        });*/
 
         platz1.setText(highscoreList.get(0).toString());
         platz2.setText(highscoreList.get(1).toString());
@@ -158,6 +145,9 @@ public class MainViewController {
     private void playMusic() {
         if (player.isPlaying()) {
             player.pause();
+        }
+        else if(player.isPaused()){
+            player.resume();
         }
         else{
             player.playWithBeatThread();

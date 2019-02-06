@@ -103,7 +103,7 @@
                      <center>
                         <VBox alignment="BOTTOM_CENTER" prefHeight="322.0" prefWidth="1920.0">
                            <children>
-                              <Button fx:id="changeSongButton" mnemonicParsing="false" onAction="#changeSong" style="-fx-background-color: transperent;" text="CHANGE SONG" textFill="#353535">
+                              <Button fx:id="changeSongButton" mnemonicParsing="false" onAction="#changeSong" style="-fx-background-color: transparent;" text="CHANGE SONG" textFill="#353535">
                                  <font>
                                     <Font size="50.0" />
                                  </font>

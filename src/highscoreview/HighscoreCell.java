@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import java.util.logging.LoggingMXBean;
 
@@ -26,6 +27,9 @@ public class HighscoreCell extends ListCell<Highscore> {
         platzierung = new Label();
         score = new Label();
         name = new Label();
+        Font font = new Font("System",30);
+        name.setFont(font);
+        score.setFont(font);
         view = new Pane();
 
         //tabelle.getChildren().addAll(score, name);
@@ -34,6 +38,8 @@ public class HighscoreCell extends ListCell<Highscore> {
         cellKasten.getChildren().addAll(platzierung, score,name);
 
         view.getChildren().add(cellKasten);
+        this.setStyle("-fx-background-color: transparent");
+        this.setAlignment(Pos.CENTER);
         this.setGraphic(view);
     }
 

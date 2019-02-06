@@ -10,6 +10,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,8 +26,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 public class Main extends Application {
-
-    //TODO Anzeigefehler beim eneuten Spieleversuch
+    //Bei falscher Skalierung als VM Option "-Dprism.allowhidpi=false" setzen
 
     private FXMLLoader loader;
     private MP3Player player;
@@ -130,8 +130,13 @@ public class Main extends Application {
     public void switchView(String viewName){
         switch (viewName){
             case "afterGameView":
-                scene.setRoot(afterGameView);
-                afterGameController.updateScore();
+                Platform.runLater(new Runnable(){
+                    @Override
+                    public void run() {
+                        scene.setRoot(afterGameView);
+                        afterGameController.updateScore();
+                    }
+                });
                 break;
             case "mainView":
                 scene.setRoot(mainView);

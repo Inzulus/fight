@@ -98,6 +98,7 @@ public class GameViewController {
                     gameView.stopGame();
                     highscoreList.add(new Highscore(player.getCurrentTrack(), gameView.currentHighscore));
                     application.switchView("afterGameView");
+                    player.audioPlayer.rewind();
                 }
             }
         });

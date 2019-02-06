@@ -187,6 +187,9 @@ public class MP3Player {
     public TimeProperty getCurrentTimeProperty(){ return currentTime; }
     public Track getCurrentTrack(){ return currentTrack; }
     public boolean isPlaying(){ return isPlaying; }
+    public boolean isPaused(){
+        return  isPaused;
+    }
     public SimpleBooleanProperty getIsFinished(){
         return isFinished;
     }

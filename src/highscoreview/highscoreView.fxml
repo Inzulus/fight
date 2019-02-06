@@ -18,7 +18,7 @@
       </ImageView>
       <AnchorPane prefHeight="1080.0" prefWidth="1920.0">
          <children>
-            <VBox alignment="CENTER" layoutX="-4.0" layoutY="394.0" prefHeight="345.0" prefWidth="1920.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <VBox alignment="CENTER" layoutY="327.0" prefHeight="500.0" prefWidth="1920.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <HBox alignment="CENTER" layoutX="-4.0" layoutY="394.0" prefHeight="100.0" prefWidth="1920.0">
                      <children>
@@ -40,7 +40,7 @@
                         <Insets left="8.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView fx:id="listview" layoutX="500.0" layoutY="500.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" style="-fx-alignment: center; -fx-background-color: transparent;">
+                  <ListView fx:id="listview" layoutX="500.0" layoutY="500.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="340.0" prefWidth="401.0" style="-fx-alignment: center; -fx-background-color: transparent; -fx-opacity: 1;">
                      <VBox.margin>
                         <Insets left="8.0" />
                      </VBox.margin>

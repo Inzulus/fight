@@ -41,6 +41,8 @@ public class HighscoreViewController {
         this.application = application;
         this.highscoreList = highscoreList;
         //loadPlaylist(highscoreList);
+        listview.setStyle("-fx-background-color: transparent");
+        //listview.setStyle("-fx");
 
     }
 

@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 
 public class GameView extends BorderPane {
@@ -63,6 +64,7 @@ public class GameView extends BorderPane {
                     elapsedTime =0;
                 }
 
+                try{
                 for(GameEntity projectile:projectileEntities){
                     for(EnemyEntity enemy:enemyEntities){
                         if(projectile.collide(enemy)){
@@ -72,6 +74,9 @@ public class GameView extends BorderPane {
                             currentHighscore+=enemy.getScore();
                         }
                     }
+                }
+                }catch (ConcurrentModificationException cme){
+
                 }
                 highscoreLabel.setText(Integer.toString(currentHighscore));
 
