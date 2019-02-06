@@ -34,8 +34,10 @@ public class GameView extends BorderPane {
     public GameView(){
         wrapPane = new Pane();
         highscoreLabel = new Label("XXXXXXXX");
-        highscoreLabel.setStyle("-fx-font-size: 30pt");
-        highscoreLabel.setLayoutX(1850);
+        highscoreLabel.setStyle("-fx-font-size: 50pt");
+        highscoreLabel.setTextFill(Color.web("#011425"));
+
+        highscoreLabel.setLayoutX(1500);
         canvas = new Canvas(1920,1000);
         //wrapPane.setStyle("-fx-background-color: black");
 

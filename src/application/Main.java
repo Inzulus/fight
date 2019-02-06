@@ -171,7 +171,7 @@ public class Main extends Application {
 
                 Timeline timelineESC = new Timeline();
                 KeyValue kvESC = new KeyValue(painESC.getChildren().get(1).translateYProperty(), 0, Interpolator.EASE_IN);
-                KeyFrame kfESC = new KeyFrame(Duration.millis(1000), kvESC);
+                KeyFrame kfESC = new KeyFrame(Duration.millis(300), kvESC);
                 timelineESC.getKeyFrames().add(kfESC);
 
                 timelineESC.play();
@@ -185,7 +185,7 @@ public class Main extends Application {
 
                 Timeline timelineESC2 = new Timeline();
                 KeyValue kvESC2 = new KeyValue(painESC2.getChildren().get(1).translateYProperty(), -1080, Interpolator.EASE_IN);
-                KeyFrame kfESC2 = new KeyFrame(Duration.millis(1000), kvESC2);
+                KeyFrame kfESC2 = new KeyFrame(Duration.millis(300), kvESC2);
                 timelineESC2.getKeyFrames().add(kfESC2);
                 timelineESC2.setOnFinished(event -> {
                     painESC2.getChildren().remove(1);
