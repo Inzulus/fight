@@ -2,7 +2,6 @@ package aftergameview;
 
 import application.Main;
 import gameview.Highscore;
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -67,24 +66,15 @@ public class AfterGameController {
     //FXML Methoden
     @FXML
     private void speicherEingabe() {
-        //TODO Eingabe von Textfeld speichern
-        System.out.println("speicherEingabe");
         Highscore aktuellerHighscore = highscoreList.remove(highscoreList.size()-1);
         aktuellerHighscore.setSpielerName(eingabeTextfeld.getText());
         highscoreList.add(aktuellerHighscore);
         highscoreList.sort(Highscore::compareTo);
-        for(Highscore hs : highscoreList){
-            System.out.println(hs.getSpielerName());
-            System.out.println(hs.getScore());
-            System.out.println(hs.getTrack());
-        }
         application.switchView("mainView");
     }
 
     @FXML
     private void returnHome() {
-        //TODO zum Hauptmenü zurückkehren
-        System.out.println("returnHome");
         application.switchView("mainView");
     }
 

@@ -2,8 +2,6 @@ package gameview;
 
 import player.Track;
 
-import java.awt.*;
-
 public class Highscore implements Comparable<Highscore>{
     private int score;
     private String spielerName;
@@ -25,9 +23,6 @@ public class Highscore implements Comparable<Highscore>{
         this.spielerName = spielerName;
     }
 
-    public void addScore(int score){
-        this.score += score;
-    }
 
     @Override
     public int compareTo(Highscore o) {

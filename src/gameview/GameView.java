@@ -10,7 +10,6 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
-import java.util.Iterator;
 
 
 public class GameView extends BorderPane {
@@ -21,16 +20,15 @@ public class GameView extends BorderPane {
     GameEntity spieler;
 
     private Canvas canvas;
-    GraphicsContext graphicsContext;
-    Pane wrapPane;
-    Label highscoreLabel;
+    private GraphicsContext graphicsContext;
+    private Pane wrapPane;
+    private Label highscoreLabel;
 
     AnimationTimer animationTimer;
     private Long lastSystemTime;
     int currentHighscore;
     boolean isRunning;
-    /*Image image;
-    ImageView iv;*/
+
 
 
     public GameView(){
@@ -41,20 +39,16 @@ public class GameView extends BorderPane {
 
         highscoreLabel.setLayoutX(1500);
         canvas = new Canvas(1920,1000);
-        //wrapPane.setStyle("-fx-background-color: black");
-
-        /*File file = new File("files/Gameviewimage.png");
-        image = new Image(file.toURI().toString());
-        iv = new ImageView(image);*/
-
-        this.setCenter(wrapPane);
+        wrapPane.setStyle("-fx-background-image: url(\"files/Gameviewimage.png\");");
         wrapPane.getChildren().addAll(canvas,highscoreLabel);
 
+        this.setCenter(wrapPane);
         graphicsContext = canvas.getGraphicsContext2D();
-        wrapPane.setStyle("-fx-background-image: url(\"files/Gameviewimage.png\");");
 
 
         lastSystemTime = System.nanoTime();
+
+        //eigentlicher Gameloop in dem alle Elemente ca. 60mal pro Sekunde geupdatet und auf Kollision überprüft werden
         animationTimer = new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 double elapsedTime = (currentNanoTime - lastSystemTime) / 1000000000.0;
@@ -83,6 +77,7 @@ public class GameView extends BorderPane {
                     }
                 }*/
 
+                //durchläuft die Projectile und Enemylisten um auf Kollision zu prüfen
                 try{
                     for(GameEntity projectile:projectileEntities){
                         for(EnemyEntity enemy:enemyEntities){
@@ -96,7 +91,9 @@ public class GameView extends BorderPane {
                 }catch (ConcurrentModificationException cme){
 
                 }
+
                 highscoreLabel.setText(Integer.toString(currentHighscore));
+                //Leert den GraphicsContext und füllt ihn wieder mit allen noch vorhanden Objekten und ihrer geupdateten Position
                 graphicsContext.clearRect(0,0,1920,1000);
                 for(GameEntity entity: allEntities) {
                     entity.update(elapsedTime);
@@ -105,6 +102,7 @@ public class GameView extends BorderPane {
             }
         };
     }
+    //startet das Spiel und fügt die Spielerfigur hinzu
     public void startGame(){
         spieler = new GameEntity(1920/2,900,30,30,0,0,Color.PINK);
         allEntities.add(spieler);
@@ -113,6 +111,7 @@ public class GameView extends BorderPane {
         currentHighscore = 0;
     }
 
+    //Hält das Spiel an und entfernt alle Elemnte vom Spielfeld
     public void stopGame(){
         isRunning = false;
         animationTimer.stop();
@@ -121,9 +120,6 @@ public class GameView extends BorderPane {
         projectileEntities.removeAll(projectileEntities);
     }
 
-    public void addGameEntity(GameEntity entity){
-        allEntities.add(entity);
-    }
 
     public void addEnemyEntity(EnemyEntity entity){
         allEntities.add(entity);

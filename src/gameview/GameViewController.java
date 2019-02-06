@@ -66,7 +66,6 @@ public class GameViewController {
             application.switchView("ESCback");
         }
         else {
-            System.out.println("pauseGame");
             gameView.isRunning = false;
             player.pause();
             gameView.animationTimer.stop();

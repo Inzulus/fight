@@ -7,11 +7,11 @@ import javafx.scene.paint.Color;
 public class GameEntity {
     double x;
     double y;
-    double width;
-    double height;
+    private double width;
+    private double height;
     double speedX;
-    double speedY;
-    Color color;
+    private double speedY;
+    private Color color;
 
     public GameEntity(int x, int y,int width,int height, int speedX, int speedY,Color color){
         this.x = x;
@@ -38,7 +38,7 @@ public class GameEntity {
         return gameEntity.getBoundary().intersects(this.getBoundary());
     }
 
-    public Rectangle2D getBoundary()
+    private Rectangle2D getBoundary()
     {
         return new Rectangle2D(x,y,width,height);
     }

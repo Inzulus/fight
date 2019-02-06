@@ -2,17 +2,13 @@ package mainview;
 
 import application.Main;
 import gameview.Highscore;
-import javafx.animation.TranslateTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.*;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import player.MP3Player;
@@ -130,7 +126,6 @@ public class MainViewController {
         player.stop();
         player.loadTrack(file.getPath());
         info();
-        System.out.println(player.isPlaying());
         sliderStandart();
     }
 

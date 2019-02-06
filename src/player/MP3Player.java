@@ -1,16 +1,11 @@
 package player;
 
-import com.mpatric.mp3agic.ID3v1;
-import com.mpatric.mp3agic.InvalidDataException;
-import com.mpatric.mp3agic.Mp3File;
-import com.mpatric.mp3agic.UnsupportedTagException;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import ddf.minim.analysis.BeatDetect;
 import de.hsrm.mi.eibo.simpleplayer.MinimHelper;
 import javafx.beans.property.SimpleBooleanProperty;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -71,7 +66,6 @@ public class MP3Player {
         playThread = new Thread(){
             public void run(){
                 audioPlayer.play();
-                //System.out.println("complete");
                 while (audioPlayer.isPlaying() || (!audioPlayer.isPlaying() && isPaused)){
                     try {
                         Thread.sleep(250);
@@ -109,13 +103,11 @@ public class MP3Player {
         timeThread = new Thread() {
                 public void run() {
                 while(!isInterrupted()){
-                    //System.out.println(audioPlayer.position());
                     currentTime.setTime(audioPlayer.position()/1000);
                     try {
                         sleep(200);
                     } catch (InterruptedException e) {
                         this.interrupt();
-                        //e.printStackTrace();
                     }
                 }
             }
@@ -165,12 +157,6 @@ public class MP3Player {
         isPlayingProperty.set(false);
         isPlaying = false;
         minim.stop();
-    }
-
-
-    //Artist und Sontitel INFO:
-    public void info(){
-        //TODO
     }
 
 

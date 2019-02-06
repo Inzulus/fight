@@ -1,16 +1,11 @@
 package escapeview;
 
 import application.Main;
-import gameview.GameViewController;
-import gameview.Highscore;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import player.MP3Player;
-
-import java.util.ArrayList;
 
 public class ESCController {
 
