@@ -67,6 +67,7 @@ public class ESCController {
     @FXML
     private void returnHome () {
         application.getGameViewController().getGameView().stopGame();
+        player.audioPlayer.rewind();
         application.switchView("mainView");
     }
 }
