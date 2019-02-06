@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 
 
 public class GameView extends BorderPane {
@@ -64,29 +65,43 @@ public class GameView extends BorderPane {
                     elapsedTime =0;
                 }
 
-                try{
-                for(GameEntity projectile:projectileEntities){
-                    for(EnemyEntity enemy:enemyEntities){
-                        if(projectile.collide(enemy)){
+                /*Iterator<GameEntity> projectileIterator = projectileEntities.iterator();
+                Iterator<EnemyEntity> enemyEntityIterator = enemyEntities.iterator();
+                while(projectileIterator.hasNext()){
+                    GameEntity projectile = projectileIterator.next();
+                    //System.out.println(projectile);
+                    while(enemyEntityIterator.hasNext()){
+                        EnemyEntity enemy = enemyEntityIterator.next();
+                        //System.out.println(enemy);
+                        //System.out.println(projectile);
+                        if(enemy.collide(projectile)){
                             System.out.println("remove");
-                            enemyEntities.remove(enemy);
-                            allEntities.remove(enemy);
                             currentHighscore+=enemy.getScore();
+                            projectileIterator.remove();
+                            enemyEntityIterator.remove();
                         }
                     }
-                }
+                }*/
+
+                try{
+                    for(GameEntity projectile:projectileEntities){
+                        for(EnemyEntity enemy:enemyEntities){
+                            if(projectile.collide(enemy)){
+                                enemyEntities.remove(enemy);
+                                allEntities.remove(enemy);
+                                currentHighscore+=enemy.getScore();
+                            }
+                        }
+                    }
                 }catch (ConcurrentModificationException cme){
 
                 }
                 highscoreLabel.setText(Integer.toString(currentHighscore));
-
                 graphicsContext.clearRect(0,0,1920,1000);
                 for(GameEntity entity: allEntities) {
                     entity.update(elapsedTime);
                     entity.render(graphicsContext);
                 }
-
-
             }
         };
     }

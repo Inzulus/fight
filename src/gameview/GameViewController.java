@@ -18,7 +18,6 @@ public class GameViewController {
     private Main application;
     private ArrayList<Highscore> highscoreList = new ArrayList<>();
 
-    //FXML Ressources:
 
 
     public GameViewController(MP3Player player, Main application,ArrayList<Highscore> highscoreList) {
@@ -27,9 +26,7 @@ public class GameViewController {
         this.highscoreList = highscoreList;
         gameView = new GameView();
 
-
-
-
+        //Setzt die Geschwindigkeit der Spielfigur hoch, wenn man eine der Pfeiltasten drückt um diese zu bewegens
         gameView.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -46,6 +43,7 @@ public class GameViewController {
             }
         });
 
+        //Setz die Geschwindigkeit der Spielfigur wieder auf 0 wenn man die linke oder rechte Pfeiltaste loslässt
         gameView.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -59,6 +57,7 @@ public class GameViewController {
         });
     }
 
+    //Wird aufgerufen wenn man ESC drückt und pausiert bzw. resumed das Spiel
     public void pauseOrContinueGame() {
         if (!gameView.isRunning){
             gameView.isRunning = true;
@@ -76,6 +75,7 @@ public class GameViewController {
     }
 
     public void startGame(){
+        //Spawnt einen Gegner und ein Projektl bei jedem erkannten Takt des BeatListeners
         player.bl.getIsKickProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -90,10 +90,10 @@ public class GameViewController {
                 }
             }
         });
+        //Wenn der Song fertig abgespielt wurde, während das Spiel lief fügt er den Highscore der Liste hinzu und wechselt auf den AfterGameView
         player.getIsFinished().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                System.out.println(newValue);
                 if(newValue && gameView.isRunning){
                     gameView.stopGame();
                     highscoreList.add(new Highscore(player.getCurrentTrack(), gameView.currentHighscore));

@@ -38,8 +38,6 @@ public class MainViewController {
     private StackPane parentContainer = new StackPane();
 
         //Labels:
-    @FXML
-    private Label startLabel = new Label();
 
     @FXML
     private Label songTitelM = new Label();
@@ -53,14 +51,6 @@ public class MainViewController {
     @FXML
     private Label ueberschriftSongs = new Label();
 
-    @FXML
-    private Label platz1 = new Label();
-
-    @FXML
-    private Label platz2 = new Label();
-
-    @FXML
-    private Label platz3 = new Label();
 
         //Buttons:
     @FXML
@@ -69,14 +59,6 @@ public class MainViewController {
     @FXML
     private Button fightButton = new Button();
 
-    @FXML
-    private Button songButton1 = new Button();
-
-    @FXML
-    private Button songButton2 = new Button();
-
-    @FXML
-    private Button songButton3 = new Button();
 
     @FXML
     private Button changeSongButton = new Button();
@@ -95,19 +77,6 @@ public class MainViewController {
 
     @FXML
     private Slider sliderAudio = new Slider();
-
-        //Rectangles:
-    @FXML
-    private Rectangle rec1= new Rectangle();
-
-    @FXML
-    private Rectangle rec2 = new Rectangle();
-
-    @FXML
-    private Rectangle bottomRec = new Rectangle();
-
-        //Transitions:
-    private TranslateTransition translateTransition = new TranslateTransition();
 
 
     //CONTROLLER:
@@ -131,10 +100,6 @@ public class MainViewController {
             sliderSong.setValue(newValues.doubleValue());
         });
 
-        platz1.setText(highscoreList.get(0).toString());
-        platz2.setText(highscoreList.get(1).toString());
-        platz3.setText(highscoreList.get(2).toString());
-
     }
 
 
@@ -152,27 +117,11 @@ public class MainViewController {
         else{
             player.playWithBeatThread();
             }
-
     }
 
     @FXML
     private void muteMusic() {
         player.mute();
-    }
-
-    @FXML
-    private void playSong1() {
-        /*TODO den letzten Song in der Liste abspielen*/
-    }
-
-    @FXML
-    private void playSong2() {
-        /*TODO den vorletzten Song in der Liste abspielen*/
-    }
-
-    @FXML
-    private void playSong3() {
-        /*TODO den drittletzten Song in der Liste abspielen*/
     }
 
     @FXML
@@ -187,7 +136,6 @@ public class MainViewController {
 
     @FXML
     private void showHighscore() {
-        //TODO Die Highscores zum ausgewählten Song zeigen
        application.switchView("highscoreView");
     }
 
