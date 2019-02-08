@@ -4,18 +4,18 @@
 <comment>Settings XML File for FightGame</comment>
 <entry key="currentTrack">02_LoveWillBeWithYou.mp3</entry>
 <entry key="hs3Track">02_LoveWillBeWithYou.mp3</entry>
-<entry key="hs3Score">260</entry>
+<entry key="hs3Score">270</entry>
 <entry key="hs5Name">Julius</entry>
 <entry key="hs4Track">02_LoveWillBeWithYou.mp3</entry>
-<entry key="hs4Score">210</entry>
+<entry key="hs4Score">260</entry>
 <entry key="hs4Name">Julius</entry>
 <entry key="hs1Track">02_LoveWillBeWithYou.mp3</entry>
-<entry key="hs3Name">Julius</entry>
+<entry key="hs3Name">Jörn</entry>
 <entry key="hs1Score">340</entry>
-<entry key="hs2Name">Jörn</entry>
+<entry key="hs2Name">asdf</entry>
 <entry key="hs5Track">02_LoveWillBeWithYou.mp3</entry>
 <entry key="hs1Name">Julius</entry>
 <entry key="hs5Score">210</entry>
 <entry key="hs2Track">02_LoveWillBeWithYou.mp3</entry>
-<entry key="hs2Score">270</entry>
+<entry key="hs2Score">300</entry>
 </properties>

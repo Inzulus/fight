@@ -34,10 +34,10 @@ public class GameView extends BorderPane {
     public GameView(){
         wrapPane = new Pane();
         highscoreLabel = new Label("XXXXXXXX");
-        highscoreLabel.setStyle("-fx-font-size: 50pt");
-        highscoreLabel.setTextFill(Color.web("#011425"));
+        highscoreLabel.setStyle("-fx-font-size: 40pt");
+        highscoreLabel.setTextFill(Color.web("#fffcad"));
 
-        highscoreLabel.setLayoutX(1500);
+        highscoreLabel.setLayoutX(1800);
         canvas = new Canvas(1920,1000);
         wrapPane.setStyle("-fx-background-image: url(\"files/Gameviewimage.png\");");
         wrapPane.getChildren().addAll(canvas,highscoreLabel);
@@ -57,25 +57,6 @@ public class GameView extends BorderPane {
                 if(elapsedTime>1){
                     elapsedTime =0;
                 }
-
-                //Einmal Ignorieren bitte:
-                /*Iterator<GameEntity> projectileIterator = projectileEntities.iterator();
-                Iterator<EnemyEntity> enemyEntityIterator = enemyEntities.iterator();
-                while(projectileIterator.hasNext()){
-                    GameEntity projectile = projectileIterator.next();
-                    //System.out.println(projectile);
-                    while(enemyEntityIterator.hasNext()){
-                        EnemyEntity enemy = enemyEntityIterator.next();
-                        //System.out.println(enemy);
-                        //System.out.println(projectile);
-                        if(enemy.collide(projectile)){
-                            System.out.println("remove");
-                            currentHighscore+=enemy.getScore();
-                            projectileIterator.remove();
-                            enemyEntityIterator.remove();
-                        }
-                    }
-                }*/
 
                 //durchläuft die Projectile und Enemylisten um auf Kollision zu prüfen
                 try{

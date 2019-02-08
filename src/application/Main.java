@@ -27,7 +27,6 @@ import java.util.Properties;
 
 public class Main extends Application {
     //Bei falscher Skalierung als VM Option "-Dprism.allowhidpi=false" setzen
-    //Die View "GameOverlay" wird nie benutzt, soll aber für den späteren Verlauf sein, da wir das Projekt in Zukunft weiterführen möchten.
 
     private FXMLLoader loader;
     private MP3Player player;
