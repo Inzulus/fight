@@ -34,31 +34,18 @@ public class MainViewController {
     private StackPane parentContainer = new StackPane();
 
         //Labels:
-
     @FXML
     private Label songTitelM = new Label();
-
     @FXML
     private Label songTitelL = new Label();
-
-    @FXML
-    private Label ueberschriftTop = new Label();
-
-    @FXML
-    private Label ueberschriftSongs = new Label();
-
 
         //Buttons:
     @FXML
     private Button playButton = new Button();
-
     @FXML
     private Button fightButton = new Button();
-
-
     @FXML
     private Button changeSongButton = new Button();
-
     @FXML
     private Button highscoreButton = new Button();
     @FXML
@@ -70,7 +57,6 @@ public class MainViewController {
         //Slider:
     @FXML
     private Slider sliderSong = new Slider();
-
     @FXML
     private Slider sliderAudio = new Slider();
 
@@ -95,11 +81,8 @@ public class MainViewController {
         player.getCurrentTimeProperty().timeProperty().addListener((observable,oldValue,newValues)->{
             sliderSong.setValue(newValues.doubleValue());
         });
-
     }
 
-
-    //TODO Slider abfangen und reagieren
 
         //Button Methoden:
     @FXML

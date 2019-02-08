@@ -26,9 +26,6 @@ public class HighscoreViewController {
     private Label songtitel = new Label();
 
     @FXML
-    private Button playButton = new Button();
-
-    @FXML
     private Button homeButton = new Button();
 
     @FXML
@@ -46,7 +43,7 @@ public class HighscoreViewController {
 
     }
 
-    //TODO label müssen Infomationen aus dem HighscoreObjekt holen
+
     //FXML Methoden:
 
     @FXML
@@ -57,9 +54,9 @@ public class HighscoreViewController {
     @FXML
     public void menue () {
         application.switchView("mainView");
-
     }
 
+    //Füllen der Highscoreliste
     public void loadPlaylist(ArrayList<Highscore> highscoreList){
         songtitel.setText(player.getCurrentTrack().getName());
         ObservableList<Highscore> observableList = FXCollections.observableArrayList();
@@ -76,5 +73,4 @@ public class HighscoreViewController {
             }
         });
     }
-
 }

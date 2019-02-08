@@ -25,7 +25,6 @@ public class AfterGameController {
         //Buttons:
     @FXML
     private Button eingabeSpeichernButton = new Button();
-
     @FXML
     private Button homeButton = new Button();
 
@@ -36,10 +35,10 @@ public class AfterGameController {
         //Labels:
     @FXML
     private Label songtitelFeld = new Label();
-
     @FXML
     private Label scoreFeld = new Label();
 
+        //Others:
     private InfoListener il = new InfoListener() {
 
         @Override
@@ -53,6 +52,7 @@ public class AfterGameController {
         }
     };
     MP3Player player;
+
 
     //Kontruktor
     public AfterGameController (Main application, MP3Player player, ArrayList<Highscore> highscoreList) {
@@ -78,14 +78,9 @@ public class AfterGameController {
         application.switchView("mainView");
     }
 
+    //Others:
     public void updateScore(){
         scoreFeld.setText(Integer.toString(highscoreList.get(highscoreList.size()-1).getScore()));
         songtitelFeld.setText(player.getCurrentTrack().getName());
     }
-
-
-
-
-
-
 }

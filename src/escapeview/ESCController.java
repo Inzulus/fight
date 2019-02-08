@@ -9,18 +9,13 @@ import player.MP3Player;
 
 public class ESCController {
 
+    //TODO (FÜR NACH DER ABGABE) Labelinformationen aus dem GameViewController rausholen zu jedem Zeitpunkt
+
     private MP3Player player;
     private Main application;
     private FileChooser fileChooser = new FileChooser();
 
     //FXML Resourcen
-
-        //Labels:
-    @FXML
-    private Label bestScore = new Label();
-
-    @FXML
-    private Label yourScore = new Label();
 
         //Buttons:
     @FXML
@@ -39,21 +34,16 @@ public class ESCController {
         this.application = application;
     }
 
-    //TODO Labelinformationen aus dem GameViewController rausholen zu jedem Zeitpunkt
-
 
     //FXML Methoden
 
     @FXML
     private void continueGame () {
-        //TODO Spiel fortsetzen, ohne das es Freezt
         application.getGameViewController().pauseOrContinueGame();
-
     }
 
     @FXML
     private void restartSong () {
-        //TODO richtige Schwierigkeiten die Methoden des GameViewControllers aufzurufen
         application.getGameViewController().getGameView().stopGame();
         application.switchView("ESCback");
         application.getGameViewController().startGame();

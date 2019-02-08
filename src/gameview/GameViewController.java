@@ -19,7 +19,7 @@ public class GameViewController {
     private ArrayList<Highscore> highscoreList = new ArrayList<>();
 
 
-
+    //Kontruktor:
     public GameViewController(MP3Player player, Main application,ArrayList<Highscore> highscoreList) {
         this.player = player;
         this.application = application;
@@ -89,6 +89,7 @@ public class GameViewController {
                 }
             }
         });
+
         //Wenn der Song fertig abgespielt wurde, während das Spiel lief fügt er den Highscore der Liste hinzu und wechselt auf den AfterGameView
         player.getIsFinished().addListener(new ChangeListener<Boolean>() {
             @Override
@@ -106,6 +107,7 @@ public class GameViewController {
         gameView.startGame();
     }
 
+    //Lonely Getter:
     public GameView getGameView(){
         return gameView;
     }

@@ -43,7 +43,7 @@ public class GameEntity {
         return new Rectangle2D(x,y,width,height);
     }
 
-    public void setX(double x) {
+    /*public void setX(double x) {
         this.x = x;
     }
 
@@ -57,5 +57,5 @@ public class GameEntity {
 
     public double getY(){
         return y;
-    }
+    }*/
 }

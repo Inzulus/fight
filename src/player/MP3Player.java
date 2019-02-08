@@ -37,7 +37,6 @@ public class MP3Player {
 
         MinimHelper minimHelper = new MinimHelper();
         minim = new Minim(minimHelper);
-        //audioPlayer = minim.loadFile(filename,1024);
         loadTrack(filename);
 
     }
@@ -48,13 +47,11 @@ public class MP3Player {
              currentTrack = new Track(filename);
             audioPlayer = minim.loadFile(currentTrack.getPath(),1024);
 
-
             beatDetect = new BeatDetect(audioPlayer.bufferSize(), audioPlayer.sampleRate());
             beatDetect.setSensitivity(300);
             kickSize = snareSize = hatSize = 16;
             bl = new BeatListener(beatDetect, audioPlayer);
             fireInfoEvent();
-
     }
 
 
@@ -179,5 +176,4 @@ public class MP3Player {
     public SimpleBooleanProperty getIsFinished(){
         return isFinished;
     }
-
 }

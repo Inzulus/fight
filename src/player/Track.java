@@ -39,9 +39,6 @@ public class Track {
         } catch (InvalidDataException e) {
             e.printStackTrace();
         }
-
-
-
     }
 
 

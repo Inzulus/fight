@@ -27,6 +27,7 @@ import java.util.Properties;
 
 public class Main extends Application {
     //Bei falscher Skalierung als VM Option "-Dprism.allowhidpi=false" setzen
+    //Die View "GameOverlay" wird nie benutzt, soll aber für den späteren Verlauf sein, da wir das Projekt in Zukunft weiterführen möchten.
 
     private FXMLLoader loader;
     private MP3Player player;
@@ -42,13 +43,16 @@ public class Main extends Application {
     private Parent highscoreView;
     private ArrayList<Highscore> highscoreList = new ArrayList<>();
 
+
     public void init() {
         player = new MP3Player("boom.mp3");
-
     }
 
+    //Startet mit dem laden aller Views.
     @Override
     public void start(Stage primaryStage) throws IOException {
+
+        //Highscorelist wird vorbereitet und geladen:
         try {
             InputStream inputStream = new FileInputStream("settings.xml");
 
@@ -65,6 +69,8 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
+
+        //OVERLOAD:
         loader = new FXMLLoader(getClass().getResource("/aftergameview/afterGameView.fxml"));
         afterGameController = new AfterGameController(this,player,highscoreList);
         loader.setController(afterGameController);
@@ -85,6 +91,7 @@ public class Main extends Application {
         loader.setController(highscoreController);
         highscoreView = loader.load();
 
+        //Setzen des Root-Elements:
         gameViewController = new GameViewController(player,this,highscoreList);
         Parent root = mainView;
 
@@ -95,6 +102,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    //Stop das Programm und speichert alle Properties in die Settings-Datei:
     @Override
     public void stop()throws Exception{
 
@@ -124,9 +132,9 @@ public class Main extends Application {
 
         super.stop();
         player.stop();
-
     }
 
+    //View-Switch:
     public void switchView(String viewName){
         switch (viewName){
             case "afterGameView":
@@ -138,9 +146,11 @@ public class Main extends Application {
                     }
                 });
                 break;
+
             case "mainView":
                 scene.setRoot(mainView);
                 break;
+
             case "gameView":
                 StackPane pain = new StackPane();
 
@@ -162,6 +172,7 @@ public class Main extends Application {
                 gameViewController.startGame();
                 gameViewController.getGameView().requestFocus();
                 break;
+
             case "highscoreView":
                 scene.setRoot(highscoreView);
                 highscoreController.loadPlaylist(highscoreList);
@@ -181,6 +192,7 @@ public class Main extends Application {
 
                 timelineESC.play();
                 break;
+
             case "ESCback":
                 StackPane painESC2 = new StackPane();
 
@@ -203,11 +215,13 @@ public class Main extends Application {
         }
     }
 
+    //Getter:
     public GameViewController getGameViewController() {
         return gameViewController;
     }
 
 
+    //Start:
     public static void main(String[] args) {
         launch(args);
     }

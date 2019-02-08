@@ -30,7 +30,7 @@ public class GameView extends BorderPane {
     boolean isRunning;
 
 
-
+    //Kontruktor:
     public GameView(){
         wrapPane = new Pane();
         highscoreLabel = new Label("XXXXXXXX");
@@ -45,7 +45,6 @@ public class GameView extends BorderPane {
         this.setCenter(wrapPane);
         graphicsContext = canvas.getGraphicsContext2D();
 
-
         lastSystemTime = System.nanoTime();
 
         //eigentlicher Gameloop in dem alle Elemente ca. 60mal pro Sekunde geupdatet und auf Kollision überprüft werden
@@ -59,6 +58,7 @@ public class GameView extends BorderPane {
                     elapsedTime =0;
                 }
 
+                //Einmal Ignorieren bitte:
                 /*Iterator<GameEntity> projectileIterator = projectileEntities.iterator();
                 Iterator<EnemyEntity> enemyEntityIterator = enemyEntities.iterator();
                 while(projectileIterator.hasNext()){
@@ -93,6 +93,7 @@ public class GameView extends BorderPane {
                 }
 
                 highscoreLabel.setText(Integer.toString(currentHighscore));
+
                 //Leert den GraphicsContext und füllt ihn wieder mit allen noch vorhanden Objekten und ihrer geupdateten Position
                 graphicsContext.clearRect(0,0,1920,1000);
                 for(GameEntity entity: allEntities) {
@@ -121,6 +122,7 @@ public class GameView extends BorderPane {
     }
 
 
+    //Adds:
     public void addEnemyEntity(EnemyEntity entity){
         allEntities.add(entity);
         enemyEntities.add(entity);

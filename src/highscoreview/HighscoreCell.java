@@ -15,6 +15,7 @@ public class HighscoreCell extends ListCell<Highscore> {
     private Label score;
     private Label name;
 
+    //Kontruktor:
     public HighscoreCell () {
         HBox cellKasten = new HBox();
 
@@ -22,6 +23,7 @@ public class HighscoreCell extends ListCell<Highscore> {
         score = new Label();
         name = new Label();
         Font font = new Font("System",30);
+
         name.setFont(font);
         score.setFont(font);
         view = new Pane();
@@ -38,7 +40,6 @@ public class HighscoreCell extends ListCell<Highscore> {
 
     @Override
     protected void updateItem(Highscore highscore, boolean empty) {
-
         super.updateItem(highscore, empty);
 
         if (highscore != null) {

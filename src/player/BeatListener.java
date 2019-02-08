@@ -12,8 +12,7 @@ public class BeatListener implements AudioListener
     private AudioPlayer source;
     private SimpleBooleanProperty isKickProperty;
 
-    BeatListener(BeatDetect beat, AudioPlayer source)
-    {
+    BeatListener(BeatDetect beat, AudioPlayer source) {
         this.source = source;
         this.source.addListener(this);
         this.beat = beat;
@@ -26,8 +25,7 @@ public class BeatListener implements AudioListener
     }
 
     //Diese Methode wird vom Audiolistener jedes sample automatisch aufgerufen und prüft ob in dem Sample ein Beat vorhanden ist.
-    public void samples(float[] sampsL, float[] sampsR)
-    {
+    public void samples(float[] sampsL, float[] sampsR) {
         beat.detect(source.mix);
         isKickProperty.set(beat.isKick());
     }

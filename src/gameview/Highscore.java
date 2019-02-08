@@ -7,6 +7,8 @@ public class Highscore implements Comparable<Highscore>{
     private String spielerName;
     private Track track;
 
+
+    //Kontruktor:
     public Highscore(Track track,int score){
         this.track = track;
         this.score = score;
@@ -19,16 +21,20 @@ public class Highscore implements Comparable<Highscore>{
         this.spielerName = name;
     }
 
-    public void setSpielerName(String spielerName){
-        this.spielerName = spielerName;
-    }
-
 
     @Override
     public int compareTo(Highscore o) {
         return (o.score - this.score);
     }
 
+
+    //Setter:
+    public void setSpielerName(String spielerName){
+        this.spielerName = spielerName;
+    }
+
+
+    //Getter:
     public int getScore() {
         return score;
     }
